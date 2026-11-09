@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+:root {
+    color-scheme: light;
+    --font-datetime: "Roboto Mono", monospace;
+    --font-main: "Roboto", sans-serif;
+
+    --accent1: hsl(210, 93%, 95%);
+    --accent1-hover: hsl(210, 93%, 97%);
+    --accent1-active: hsl(210, 93%, 92%);
+
+    --accent2: hsl(192, 93%, 95%);
+    --accent2-hover: hsl(192, 93%, 97%);
+    --accent2-active: hsl(192, 93%, 92%);
+
+    --accent3: hsl(300, 92%, 87%);
+    --accent3-hover: hsl(300, 92%, 90%);
+    --accent3-active: hsl(300, 92%, 83%);
+
+    --scrollbar: hsl(210, 100%, 20%);
+    --scrollbar-hover: hsl(210, 100%, 25%);
+
+    --primary: hsl(223, 76%, 27%);
+    --secondary: hsl(215, 97%, 55%);
+    --secondary-l: hsl(215, 97%, 60%);
+    --mix: hsl(219, 87%, 41%);
+
+    --red-l2: hsl(0, 85%, 90%);
+    --red-l1: hsl(0, 85%, 80%);
+    --red-l3: hsl(0, 85%, 60%);
+    --red: hsl(0, 85%, 55%);
+
+    --white1: hsl(220, 60%, 99%);
+    --white2: hsl(210, 100%, 98%);
+    --white3: hsl(210, 100%, 97%);
+    --white4: hsl(220, 100%, 96%);
+    --white5: hsl(218, 85%, 95%);
+    --white6: hsl(216, 96%, 90%);
+
+    --grey: hsl(216, 60%, 65%);
+    --grey1: hsl(216, 60%, 85%);
+
+    --black1: hsl(216, 90%, 10%);
+
+    --text-light: hsl(240, 100%, 99%);
+    --text-dark: hsl(227, 45%, 30%);
+
+    --expirable: hsl(300, 50%, 60%);
+    --expirable-l: hsl(300, 90%, 90%);
+
+    --todo: hsl(260, 80%, 50%);
+    --todo-l: hsl(260, 80%, 90%);
+    --event: hsl(210, 80%, 50%);
+    --event-l: hsl(210, 80%, 90%);
+    --birthday: hsl(170, 80%, 50%);
+    --birthday-l: hsl(170, 80%, 90%);
+    --holiday: hsl(120, 80%, 50%);
+    --holiday-l: hsl(120, 80%, 90%);
+    --misc: hsl(50, 80%, 50%);
+    --misc-l: hsl(50, 80%, 90%);
+}
+.dark {
+    color-scheme: dark;
+
+    --secondary: hsl(215, 97%, 42%);
+    --primary: hsl(218, 72%, 25%);
+    --mix: hsl(219, 78%, 32%);
+
+    --white1: hsl(222, 24%, 16%);
+    --white2: hsl(222, 26%, 12%);
+    --white3: hsl(222, 22%, 20%);
+    --white4: hsl(222, 20%, 12%);
+    --white5: hsl(222, 28%, 18%);
+    --white6: hsl(222, 18%, 24%);
+
+    --grey: hsl(216, 30%, 65%);
+    --grey1: hsl(222, 18%, 10%);
+    --black1: hsl(220, 35%, 95%);
+
+    --text-dark: hsl(220, 30%, 92%);
+    --text-light: hsl(220, 60%, 99%);
+
+    --accent1: hsl(210, 35%, 20%);
+    --accent1-hover: hsl(210, 38%, 25%);
+    --accent1-active: hsl(210, 40%, 16%);
+
+    --accent2: hsl(192, 35%, 20%);
+    --accent2-hover: hsl(192, 38%, 25%);
+    --accent2-active: hsl(192, 40%, 16%);
+
+    --accent3: hsl(300, 32%, 24%);
+    --accent3-hover: hsl(300, 35%, 29%);
+    --accent3-active: hsl(300, 38%, 20%);
+
+    --scrollbar: hsl(210, 35%, 55%);
+    --scrollbar-hover: hsl(210, 40%, 68%);
+
+    --red-l2: hsl(0, 35%, 18%);
+    --red-l1: hsl(0, 40%, 24%);
+    --red-l3: hsl(0, 55%, 45%);
+    --red: hsl(0, 65%, 60%);
+
+    --expirable: hsl(300, 45%, 62%);
+    --expirable-l: hsl(300, 30%, 22%);
+
+    --todo-l: hsl(260, 35%, 22%);
+    --event-l: hsl(210, 35%, 22%);
+    --birthday-l: hsl(170, 32%, 22%);
+    --holiday-l: hsl(120, 30%, 22%);
+    --misc-l: hsl(50, 35%, 22%);
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+button {
+    user-select: none;
+    cursor: pointer;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+/* Shared settings card styles */
+.settings-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-title h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.settings-top-card {
+    background-color: var(--white1);
+    padding: 16px;
+    width: 47%;
+    border-radius: 16px;
+    box-shadow: 1px 1px 20px var(--grey1);
+}
