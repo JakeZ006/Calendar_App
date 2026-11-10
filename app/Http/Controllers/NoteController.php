@@ -17,7 +17,6 @@ class NoteController extends Controller
 {
     public function index(Note $note, User $user, Image $image, Quote $quote): Response
     {
-        dd($quote::all());
 
         return Inertia::render('Home', [
             'notes' => $note::where('user_id', Auth::id())
