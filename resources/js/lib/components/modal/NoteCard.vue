@@ -16,11 +16,7 @@ const emit = defineEmits(["editNote", "delete"]);
           <SquarePen color="var(--text-light)" />
           <p>Edit</p>
         </button>
-        <Form
-          :action="`deleteNote/${note.id}`"
-          method="delete"
-          @success="$emit('delete')"
-        >
+        <Form :action="`deleteNote/${note.id}`" method="delete" @success="$emit('delete')">
           <input type="hidden" name="id" :value="note.id" />
           <button class="card-button delete-button">
             <Trash color="var(--black1)" />

@@ -17,7 +17,9 @@ const form = reactive({
 });
 
 const formAttrs =
-  mode === "edit" ? { action: `/updateNote/${noteId}` , method: "patch" } : { action: "/createNote", method: "post" };
+  mode === "edit"
+    ? { action: `/updateNote/${noteId}`, method: "patch" }
+    : { action: "/createNote", method: "post" };
 
 if (mode === "edit") {
   const note = page.props.notes[day]?.find((i) => i.id === noteId);

@@ -97,7 +97,7 @@ const errors = page.props.errors;
     border-radius: 4px;
   }
 }
-#newUsername{
+#newUsername {
   margin-top: 32px;
 }
 .update-button {

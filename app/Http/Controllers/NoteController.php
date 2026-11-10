@@ -18,7 +18,6 @@ class NoteController extends Controller
     public function index(Note $note, User $user, Image $image, Quote $quote): Response
     {
 
-
         return Inertia::render('Home', [
             'notes' => $note::where('user_id', Auth::id())
                 ->orderBy('for_date')
@@ -73,7 +72,6 @@ class NoteController extends Controller
 
     public function destroy(DeleteNoteRequest $request, Note $note): void
     {
-
 
         $this->authorize('delete', $note);
 

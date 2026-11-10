@@ -6,7 +6,7 @@ import { computed, onMounted, ref } from "vue";
 const images = ref([]);
 const firstImage = ref(null);
 
-const scrollspeed = computed(() => images.value.length * 10 ?? 15)
+const scrollspeed = computed(() => images.value.length * 10 ?? 15);
 
 onMounted(() => {
   images.value = usePage().props.images ?? [];
@@ -32,7 +32,7 @@ onMounted(() => {
       <div v-else>
         <img v-if="firstImage" class="image" :src="`storage/${firstImage}`" />
       </div>
-      <div class="overlay" :style="images.length === 0 ? 'opacity:1': null">
+      <div class="overlay" :style="images.length === 0 ? 'opacity:1' : null">
         <h1>Upload Images</h1>
         <ImageUp color="var(--text-light)" size="32" />
       </div>
