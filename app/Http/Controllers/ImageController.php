@@ -13,7 +13,7 @@ class ImageController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'image' => ['required'],
+            'image' => ['required', 'image'],
         ]);
 
         $path = $request->image->store('images', 'public');

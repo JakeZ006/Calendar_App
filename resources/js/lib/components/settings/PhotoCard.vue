@@ -8,6 +8,8 @@ const images = computed(() => page.props.images ?? []);
 const selectedImage = ref("");
 const uploadedImage = ref(false);
 
+console.log(images)
+
 const refresh = () => {
   selectedImage.value = "";
   router.reload();
@@ -35,6 +37,7 @@ const refresh = () => {
               <button><Trash color="red" /></button>
             </Form>
           </li>
+          <li>(Works better with more images)</li>
         </ul>
       </div>
 

@@ -274,7 +274,7 @@ onMounted(() => {
 }
 
 .odd {
-  background-color: var(--accent1);
+  background-color: var(--accent);
   &:hover {
     background-color: var(--accent1-hover);
   }

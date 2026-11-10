@@ -18,6 +18,8 @@ class NoteController extends Controller
     public function index(Note $note, User $user, Image $image, Quote $quote): Response
     {
 
+        dd($image::where('user_id', Auth::id())->get());
+
         return Inertia::render('Home', [
             'notes' => $note::where('user_id', Auth::id())
                 ->orderBy('for_date')

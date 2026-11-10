@@ -19,7 +19,6 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        // Give the user a new session ID after logging in.
         $request->session()->regenerate();
 
         return redirect()->route('home');
