@@ -23,7 +23,7 @@ import { Link } from "@inertiajs/vue3";
   justify-content: end;
   width: 100%;
   height: 64px;
-  background-image: radial-gradient(circle at 30% 10%, var(--mix), var(--primary));
+  background-image: var(--gradient-primary);
 }
 .navbar-left {
   display: flex;

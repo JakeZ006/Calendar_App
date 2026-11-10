@@ -153,7 +153,7 @@ onMounted(() => {
           <ZoomIn class="zoom-in-button" />
         </button>
       </div>
-      <button class="reset-scroll-button" @click="todayCellScroll()">Reset Scroll</button>
+      <button class="reset-scroll-button button-primary" @click="todayCellScroll()">Reset Scroll</button>
     </div>
     <ModalBody
       v-if="modalOpen"
@@ -248,6 +248,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 4px;
   width: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom));
   padding: 4px;
   border-radius: 4px;
@@ -263,7 +264,6 @@ onMounted(() => {
 }
 .day,
 .month {
-  margin-left: -6px;
   font-size: clamp(11px, 30cqi, 16px);
   font-weight: 500;
 }
@@ -274,7 +274,7 @@ onMounted(() => {
 }
 
 .odd {
-  background-color: var(--accent);
+  background-color: var(--accent1);
   &:hover {
     background-color: var(--accent1-hover);
   }
@@ -365,10 +365,8 @@ onMounted(() => {
 }
 .reset-scroll-button {
   padding: 8px;
-  color: var(--text-light);
-  background-image: radial-gradient(circle at 30% 10%, var(--mix), var(--primary));
   border-radius: 12px;
-  box-shadow: 2px 2px 5px var(--grey1);
+  box-shadow: var(--shadow-button);
   cursor: pointer;
   &:hover {
     background-color: var(--mix);

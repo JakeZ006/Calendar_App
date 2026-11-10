@@ -14,7 +14,9 @@ const sidebarOpen = ref(true);
     <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
   </Head>
 
-  <Link class="settings-button" href="/settings"><Settings color="var(--text-light)" :size="32" /></Link>
+  <Link class="settings-button icon-circle" href="/settings"
+    ><Settings color="var(--text-light)" :size="32"
+  /></Link>
 
   <main class="layout">
     <Sidebar :sidebar-open="sidebarOpen" @toggle-sidebar="sidebarOpen = !sidebarOpen" />
@@ -34,10 +36,6 @@ const sidebarOpen = ref(true);
   top: 16px;
   right: 16px;
   width: 48px;
-  aspect-ratio: 1;
-  padding: 8px;
-  background-color: var(--primary);
-  border-radius: 50%;
   &:hover {
     background-color: var(--mix);
   }

@@ -15,7 +15,7 @@ const selectedTheme = computed({
 });
 </script>
 <template>
-  <div class="theme-settings settings-top-card">
+  <div class="theme-settings settings-top-card settings-card">
     <div class="settings-title">
       <Palette size="32" stroke-width="2.5" />
       <h1>Theme</h1>
@@ -24,14 +24,17 @@ const selectedTheme = computed({
     <form>
       <div class="form-wrapper">
         <label
-          :class="['theme-radio-button', selectedTheme === 'light' ? 'selected-radio' : null]"
+          :class="['theme-radio-button', 'pill-button', selectedTheme === 'light' ? 'selected-radio' : null]"
           for="light"
         >
           <Sun />
           <p>Light</p>
         </label>
 
-        <label :class="['theme-radio-button', selectedTheme === 'dark' ? 'selected-radio' : null]" for="dark">
+        <label
+          :class="['theme-radio-button', 'pill-button', selectedTheme === 'dark' ? 'selected-radio' : null]"
+          for="dark"
+        >
           <Moon />
           <p>Dark</p>
         </label>
@@ -47,18 +50,8 @@ const selectedTheme = computed({
   gap: 16px;
 }
 .theme-radio-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   margin-top: 16px;
-  padding: 8px 16px;
-  font-size: 24px;
-  border: 1px solid var(--text-dark);
-  border-radius: 32px;
   cursor: pointer;
-  p {
-    font-size: 22px;
-  }
 }
 .selected-radio {
   background-color: var(--white6);

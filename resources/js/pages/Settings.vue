@@ -6,11 +6,11 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 </script>
 
 <template>
-  <div class="body">
+  <div class="body app-page">
     <header>
       <SettingsNav />
     </header>
-    <main class="main">
+    <main class="main app-page-main">
       <div class="settings-top">
         <ThemeCard />
         <AccountCard />
@@ -22,18 +22,7 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 
 <style lang="scss" scoped>
 .body {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  min-height: 100vh;
-  max-width: min(90vw, 1200px);
-  margin: auto;
-  background-color: var(--white2);
-}
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 64px 150px;
+  --page-max-width: min(90vw, 1200px);
 }
 .settings-top {
   display: flex;

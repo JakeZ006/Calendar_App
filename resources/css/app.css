@@ -59,6 +59,19 @@
     --holiday-l: hsl(120, 80%, 90%);
     --misc: hsl(50, 80%, 50%);
     --misc-l: hsl(50, 80%, 90%);
+
+    --gradient-primary: radial-gradient(circle at 30% 10%, var(--mix), var(--primary));
+
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+    --radius-pill: 999px;
+
+    --shadow-card: 1px 1px 20px var(--grey1);
+    --shadow-button: 2px 2px 5px var(--grey1);
 }
 .dark {
     color-scheme: dark;
@@ -160,10 +173,124 @@ ul {
     font-weight: 700;
 }
 
-.settings-top-card {
-    background-color: var(--white1);
+.settings-card {
     padding: 16px;
+    background-color: var(--white1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+
+.settings-top-card {
     width: 47%;
-    border-radius: 16px;
-    box-shadow: 1px 1px 20px var(--grey1);
+}
+
+/* Page shells */
+.app-page {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    max-width: var(--page-max-width, clamp(800px, 70vw, 1200px));
+    margin: auto;
+    background-color: var(--white2);
+}
+
+.app-page-main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px 150px;
+}
+
+.app-auth-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    min-height: 100vh;
+    max-width: var(--page-max-width, clamp(800px, 70vw, 1200px));
+    margin: auto;
+    padding: 64px 150px;
+    background-color: var(--white6);
+}
+
+/* Account forms */
+.account-form-card {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    padding: 32px;
+    background-color: var(--white2);
+    border-radius: var(--radius-lg);
+}
+
+.account-form-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.account-form-title {
+    font-size: 32px;
+    text-decoration: underline;
+}
+
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 10%;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field input {
+    width: 60cqi;
+    padding: 0 12px;
+    font-size: 22px;
+    border-radius: var(--radius-xs);
+}
+
+.form-error {
+    color: var(--red);
+}
+
+/* Primary gradient buttons */
+.button-primary {
+    color: var(--text-light);
+    background-image: var(--gradient-primary);
+    cursor: pointer;
+}
+
+/* Pill buttons */
+.pill-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 24px;
+    border: 1px solid var(--text-dark);
+    border-radius: var(--radius-2xl);
+}
+
+.pill-button p {
+    font-size: 22px;
+}
+
+/* Circular primary icon */
+.icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    padding: 8px;
+    background-color: var(--primary);
+    border-radius: 50%;
 }

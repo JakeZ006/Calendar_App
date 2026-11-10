@@ -39,7 +39,7 @@ if (mode === "edit") {
   <div class="form-body">
     <div class="form-box">
       <div class="form-header">
-        <div class="notebook-icon">
+        <div class="notebook-icon icon-circle">
           <NotebookPen color="var(--text-light)" size="4cqi" />
         </div>
         <h1 class="form-header-title">
@@ -81,14 +81,14 @@ if (mode === "edit") {
             </div>
           </div>
 
-          <p class="note-info-errors">{{ errors.title }}{{ errors.type }}</p>
+          <p class="note-info-errors form-error">{{ errors.title }}{{ errors.type }}</p>
 
           <div class="content-wrapper">
             <label for="content">Content</label>
             <textarea id="content" v-model="form.content" class="content-input-box" name="content" />
           </div>
 
-          <p class="content-errors">{{ errors.content }}</p>
+          <p class="form-error">{{ errors.content }}</p>
 
           <div class="options-wrapper">
             <div>
@@ -126,7 +126,7 @@ if (mode === "edit") {
             </div>
           </div>
 
-          <button class="submit-button" type="submit">
+          <button class="submit-button button-primary" type="submit">
             <Send color="var(--text-light)" size="6cqb" />
             <p>Submit</p>
           </button>
@@ -159,15 +159,6 @@ if (mode === "edit") {
   gap: 8px;
   padding: 8px 0;
   border-bottom: 3px solid var(--white6);
-}
-.notebook-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  padding: 8px;
-  background-color: var(--primary);
-  border-radius: 50%;
 }
 .form-header-title {
   font-size: 4cqi;
@@ -233,11 +224,6 @@ if (mode === "edit") {
 .note-info-errors {
   width: 100%;
   margin-top: -12px;
-  color: var(--red);
-}
-
-.content-errors {
-  color: var(--red);
 }
 
 .content-input-box {
@@ -282,9 +268,8 @@ if (mode === "edit") {
   width: 100%;
   margin-top: auto;
   padding: 8px 16px;
-  background-image: radial-gradient(circle at 30% 10%, var(--mix), var(--primary));
   border-radius: 12px;
-  box-shadow: 2px 2px 5px var(--grey1);
+  box-shadow: var(--shadow-button);
   cursor: pointer;
   p {
     font-size: 5cqb;

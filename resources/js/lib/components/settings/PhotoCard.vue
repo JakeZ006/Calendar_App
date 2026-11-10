@@ -14,7 +14,7 @@ const refresh = () => {
 };
 </script>
 <template>
-  <div class="photo-settings">
+  <div class="photo-settings settings-card">
     <div class="settings-title">
       <Image size="32" stroke-width="2.5" />
       <h1>Photos</h1>
@@ -75,10 +75,6 @@ const refresh = () => {
 <style lang="scss" scoped>
 .photo-settings {
   container-type: inline-size;
-  padding: 16px;
-  background-color: var(--white1);
-  border-radius: 16px;
-  box-shadow: 1px 1px 20px var(--grey1);
 }
 .photo-settings-wrapper {
   display: flex;
