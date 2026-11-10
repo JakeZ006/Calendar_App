@@ -19,18 +19,13 @@ class ImageController extends Controller
         $path = $request->image->store('images', 'public');
 
         Image::create([
-            'path' => "https://fls-a330b4e4-6408-4171-ba4a-11b9394b4178.laravel.cloud/" . $path,
+            'path' => 'https://fls-a330b4e4-6408-4171-ba4a-11b9394b4178.laravel.cloud/'.$path,
             'user_id' => Auth::id(),
             'name' => $request->image->getClientOriginalName(),
         ]);
 
         return redirect()->to('/settings');
 
-    }
-
-    public function update(Request $request, Image $image): void
-    {
-        //
     }
 
     public function destroy(Image $image, Request $request): RedirectResponse

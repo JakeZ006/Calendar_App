@@ -53,7 +53,7 @@ const refresh = () => {
             <p class="date">{{ note.for_date }}</p>
             <p class="type">● {{ note.type }}</p>
             <div class="delete-button-wrapper">
-              <Form class="delete" action="deleteNote" method="delete" @success="refresh">
+              <Form class="delete" :action="`/deleteNote/${note.id}`" method="delete" @success="refresh">
                 <input v-show="false" name="id" :value="note.id" />
                 <button><Trash color="var(--primary)" /></button>
               </Form>
