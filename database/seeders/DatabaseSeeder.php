@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $quotes = json_decode(Storage::disk('public')->get('quotes.json'), true);
 
-        foreach ($quotes as $quote) {
+        foreach ($quotes ?? [] as $quote)
+        {
             DB::table('quotes')->insert([
                 'quote' => $quote['quote'],
                 'author' => $quote['author'],
