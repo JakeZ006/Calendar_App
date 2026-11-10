@@ -147,7 +147,7 @@ if (mode === "edit") {
 .form-box {
   container-type: size;
   width: max(20%, 700px);
-  height: clamp(530px, 70cqh, 650px);
+  height: clamp(450px, 60cqh, 650px);
   background-color: var(--white1);
   border-radius: 32px;
   box-shadow: 0 6px 15px 4px var(--white6);
@@ -169,9 +169,9 @@ if (mode === "edit") {
   align-items: center;
   gap: 16px;
   width: 70cqi;
-  height: 80cqh;
+  height: 70cqh;
   margin: auto;
-  margin-top: 4cqi;
+  margin-top: 8px;
 }
 
 .note-info-container {
