@@ -8,7 +8,6 @@ const images = computed(() => page.props.images ?? []);
 const selectedImage = ref("");
 const uploadedImage = ref(false);
 
-console.log(images)
 const refresh = () => {
   selectedImage.value = "";
   router.reload();
@@ -42,7 +41,7 @@ const refresh = () => {
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img v-if="selectedImage" :src="`https://fls-a330b4e4-6408-4171-ba4a-11b9394b4178.laravel.cloud/${selectedImage}`" />
+          <img v-if="selectedImage" :src="selectedImage" />
         </div>
 
         <Form
