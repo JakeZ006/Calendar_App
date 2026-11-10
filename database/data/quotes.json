@@ -1,12 +1,52 @@
 [
     {
-        "quote": "lorem ipsum dolor sit amet, consecteter adipiscing elit, sed do eiusmod tempor incididunt ut lavore et dolore magna aliqua.",
-        "author": "Lorem ipsum",
-        "source": "dolor, sit amet"
+        "quote": "Talk is cheap. Show me the code.",
+        "author": "Linus Torvalds",
+        "source": "Linux kernel mailing list"
     },
     {
-        "quote": "This is another quote",
-        "author": "me",
-        "source": "right now"
+        "quote": "Programs must be written for people to read, and only incidentally for machines to execute.",
+        "author": "Harold Abelson",
+        "source": "Structure and Interpretation of Computer Programs"
+    },
+    {
+        "quote": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+        "author": "Martin Fowler",
+        "source": "Refactoring"
+    },
+    {
+        "quote": "Make it work, make it right, make it fast.",
+        "author": "Kent Beck",
+        "source": "Extreme Programming Explained"
+    },
+    {
+        "quote": "Premature optimization is the root of all evil.",
+        "author": "Donald Knuth",
+        "source": "Structured Programming with go to Statements"
+    },
+    {
+        "quote": "The best way to predict the future is to invent it.",
+        "author": "Alan Kay",
+        "source": "Xerox PARC"
+    },
+    {
+        "quote": "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.",
+        "author": "Antoine de Saint-Exupery",
+        "source": "Terre des Hommes"
+    },
+    {
+        "quote": "Simplicity is a great virtue but it requires hard work to achieve it and education to appreciate it.",
+        "author": "Edsger W. Dijkstra",
+        "source": "How do you tell a good programmer?"
+    },
+    {
+        "quote": "There are only two hard things in Computer Science: cache invalidation and naming things.",
+        "author": "Phil Karlton",
+        "source": "attributed"
+    },
+    {
+        "quote": "First, solve the problem. Then, write the code.",
+        "author": "John Johnson",
+        "source": "attributed"
     }
 ]

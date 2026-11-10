@@ -34,15 +34,14 @@ onUnmounted(() => clearInterval(clock));
 
 <style lang="scss">
 .datetime-wrapper {
-  container-type: size;
   container-name: datetime;
   display: flex;
   flex-direction: column;
-  height: clamp(150px, 18cqh, 220px);
+  height: fit-content;
   padding: 0 32px;
   background-image: radial-gradient(circle at -100% -150%, var(--secondary), var(--primary));
   border-radius: 32px;
-
+  padding-bottom: 16px;
   & > * {
     z-index: 2;
   }
@@ -51,14 +50,14 @@ onUnmounted(() => clearInterval(clock));
   display: flex;
   align-self: center;
   font-family: var(--font-datetime);
-  font-size: clamp(64px, 24cqi, 82px);
+  font-size: clamp(64px, 20cqi, 82px);
   font-weight: 500;
   letter-spacing: -5px;
   color: var(--text-light);
 }
 .date-wrapper {
   font-family: var(--font-datetime);
-  font-size: clamp(18px, 8cqi, 32px);
+  font-size: clamp(18px, 7cqi, 32px);
   font-weight: 500;
   white-space: nowrap;
   h2 {
