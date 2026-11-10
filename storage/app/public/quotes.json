@@ -1,0 +1,12 @@
+[
+    {
+        "quote": "lorem ipsum dolor sit amet, consecteter adipiscing elit, sed do eiusmod tempor incididunt ut lavore et dolore magna aliqua.",
+        "author": "Lorem ipsum",
+        "source": "dolor, sit amet"
+    },
+    {
+        "quote": "This is another quote",
+        "author": "me",
+        "source": "right now"
+    }
+]
