@@ -23,14 +23,14 @@ onMounted(() => {
         :style="`animation-duration: ${scrollspeed}s`"
       >
         <div v-for="image in images" :key="`${image.id}-1`" class="image-wrapper">
-          <img class="image" :src="`storage/${image.path}`" />
+          <img class="image" :src="image.path" />
         </div>
         <div v-for="image in images" :key="`${image.id}-2`" class="image-wrapper">
-          <img class="image" :src="`storage/${image.path}`" />
+          <img class="image" :src="image.path" />
         </div>
       </div>
       <div v-else>
-        <img v-if="firstImage" class="image" :src="`storage/${firstImage}`" />
+        <img v-if="firstImage" class="image" :src="firstImage" />
       </div>
       <div class="overlay" :style="images.length === 0 ? 'opacity:1' : null">
         <h1>Upload Images</h1>
