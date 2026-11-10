@@ -45,7 +45,7 @@ onMounted(() => {
   container-type: size;
   position: relative;
   width: 100%;
-  height: 70%;
+  height: 100%;
   overflow: hidden;
   border-radius: 16px;
 }
