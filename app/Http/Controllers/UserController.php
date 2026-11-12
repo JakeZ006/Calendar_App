@@ -15,7 +15,12 @@ class UserController extends Controller
 {
     public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $user = User::create($request->validated());
+        $credentials = $request->validate([
+            'username' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ]);
+
+        $user = User::create($credentials);
 
         Auth::login($user);
 
@@ -58,7 +63,7 @@ class UserController extends Controller
 
         $request->validate([
             'oldPassword' => ['required', 'string'],
-            'newUsername' => ['required', 'string', 'min:4', 'max:20', 'unique:users,username,'.$user->id],
+            'newUsername' => ['required', 'string', 'min:4', 'max:20', 'unique:users'],
             'newPassword' => ['nullable', 'string', 'min:8'],
         ]);
 
@@ -93,7 +98,6 @@ class UserController extends Controller
             ]);
         }
 
-        // replace with cascade
         Note::where('user_id', $user->id)->delete();
         Image::where('user_id', $user->id)->delete();
 

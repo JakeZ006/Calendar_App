@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): void
     {
         $request->validate([
             'image' => ['required', 'image'],
@@ -24,23 +23,18 @@ class ImageController extends Controller
             'name' => $request->image->getClientOriginalName(),
         ]);
 
-        return redirect()->to('/settings');
-
     }
 
-    public function destroy(Image $image, Request $request): RedirectResponse
+    public function destroy( Request $request ): void
     {
-        $request->validate([
-            'id' => ['required', 'integer'],
-        ]);
-
         $image = Image::where('user_id', Auth::id())
-            ->findOrFail($request->integer('id'));
+            ->findOrFail($request->id);
+
+        $this->authorize('delete', $image);
 
         Storage::disk('public')->delete($image->path);
 
         $image->delete();
 
-        return redirect()->back();
     }
 }

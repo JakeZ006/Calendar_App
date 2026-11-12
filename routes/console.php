@@ -13,4 +13,4 @@ Schedule::call(function () {
     Note::where('expirable', true)
         ->whereDate('for_date', '<', now()->subDay()->toDateString())
         ->delete();
-})->daily();
+})->dailyAt('00:00');

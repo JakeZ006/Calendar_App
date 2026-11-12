@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::inertia('/', 'UserRegister')->name('landing');
+    Route::inertia('/', 'UserLogin')->name('landing');
     Route::inertia('/register', 'UserRegister')->name('register');
     Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
