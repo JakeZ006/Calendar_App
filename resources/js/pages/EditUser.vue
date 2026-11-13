@@ -1,8 +1,7 @@
 <script setup>
-import { usePage, Link } from "@inertiajs/vue3";
+import { usePage } from "@inertiajs/vue3";
 
 const page = usePage();
-let url = page.url;
 const errors = page.props.errors;
 </script>
 

@@ -25,7 +25,7 @@ class ImageController extends Controller
 
     }
 
-    public function destroy( Request $request ): void
+    public function destroy(Request $request): void
     {
         $image = Image::where('user_id', Auth::id())
             ->findOrFail($request->id);

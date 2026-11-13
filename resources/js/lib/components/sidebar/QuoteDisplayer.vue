@@ -1,29 +1,26 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 
 const quotes = usePage().props.quotes ?? [];
-const quoteIndex = ref(Math.floor(Math.random() * quotes.length));
+const index = ref(Math.floor(Math.random() * quotes.length));
+const quote = computed(() => quotes[index.value]);
+const previous = reactive([]);
 
-const quote = computed(() => quotes[quoteIndex.value]);
-
-function randomiser() {
-  if (quotes.length < 2) {
-    return;
+function getQuote() {
+  index.value = Math.floor(Math.random() * quotes.length);
+  if (previous.includes(index.value)) {
+    getQuote();
   }
-
-  let nextIndex;
-
-  do {
-    nextIndex = Math.floor(Math.random() * quotes.length);
-  } while (nextIndex === quoteIndex.value);
-
-  quoteIndex.value = nextIndex;
+  if (previous.length >= 3) {
+    previous.shift();
+  }
+  previous.push(index.value);
 }
 </script>
 
 <template>
-  <div v-if="quote" class="quote-wrapper" data-allow-mismatch @click="randomiser">
+  <div class="quote-wrapper" data-allow-mismatch @click="getQuote">
     <h2 class="quote-content">{{ quote.quote }}</h2>
     <h3 class="quote-info">- {{ quote.author }}, {{ quote.source }}</h3>
   </div>
