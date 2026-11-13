@@ -4,7 +4,7 @@ export function useDate(dateInput = "today") {
   if (dateInput === "today") {
     date = Temporal.Now.plainDateTimeISO();
   } else {
-    date = new Temporal.PlainDateTime(...dateInput.map(Number));
+    date = new Temporal.PlainDateTime(...dateInput);
   }
 
   date.names = {

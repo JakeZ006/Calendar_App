@@ -10,7 +10,9 @@ const uploadedImage = ref(false);
 
 const refresh = () => {
   selectedImage.value = "";
-  router.reload();
+  router.reload({
+    only: ['images']
+  });
 };
 </script>
 <template>

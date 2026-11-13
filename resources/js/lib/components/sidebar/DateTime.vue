@@ -5,15 +5,13 @@ import { onMounted, onUnmounted, ref } from "vue";
 const date = useDate();
 
 const timeString = ref(date.timeString);
-let clock;
 
 onMounted(() => {
-  clock = setInterval(() => {
+  setInterval(() => {
     timeString.value = Temporal.Now.instant().toString().substring(11, 19);
   }, 1000);
 });
 
-onUnmounted(() => clearInterval(clock));
 </script>
 
 <template>

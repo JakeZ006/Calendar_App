@@ -39,7 +39,9 @@ watchEffect(() => {
 });
 
 const refresh = () => {
-  router.reload();
+  router.reload({
+    only: ['notes']
+  });
   formOpen.value = false;
 };
 </script>
