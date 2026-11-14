@@ -66,6 +66,18 @@ function toggleModal() {
   modalOpen.value = !modalOpen.value;
 }
 
+function zoomOut() {
+  if (cellZoom.value >= 0.8) {
+    cellZoom.value -= 0.2;
+  }
+}
+
+function zoomIn() {
+  if (cellZoom.value <= 3.6) {
+    cellZoom.value += 0.2;
+  }
+}
+
 onMounted(() => {
   todayCellEl.value = document.getElementById(`cell-${date.dateString}`);
   todayCellScroll();
@@ -73,10 +85,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    class="calendar-wrapper"
-    :style="!sidebarOpen ? { width: '100vw', transform: 'translateX(-380px)' } : null"
-  >
+  <div class="calendar-wrapper" :class="{ 'sidebar-closed': !sidebarOpen }">
     <div class="calendar-container">
       <div class="day-of-week-container">
         <div v-for="dayName in date.names.day" :key="dayName" class="day-of-week">
@@ -96,7 +105,7 @@ onMounted(() => {
           :class="[
             'cell',
             calendar.month % 2 === 0 ? 'even' : 'odd',
-            calendar.toString().slice(0, 10) === date.dateString ? 'today-cell': null, //prettier-ignore
+            { 'today-cell': calendar.toString().slice(0, 10) === date.dateString },
           ]"
           :title="`${calendar.day}/${calendar.month}/${calendar.year}`"
           @click="openModal"
@@ -111,7 +120,7 @@ onMounted(() => {
             <div
               v-for="note in notes[calendar.toString().slice(0, 10)] ?? []"
               :key="note.id"
-              :class="['note-dot', note.type.toLowerCase(), note.important ? 'important' : null]"
+              :class="['note-dot', note.type.toLowerCase(), { important: note.important }]"
             ></div>
           </div>
 
@@ -124,7 +133,7 @@ onMounted(() => {
         <button
           class="zoom-button"
           title="Zoom out calendar"
-          @click="cellZoom >= 0.8 ? (cellZoom -= 0.2) : null"
+          @click="zoomOut"
         >
           <ZoomOut />
         </button>
@@ -148,7 +157,7 @@ onMounted(() => {
         <button
           class="zoom-button"
           title="Zoom in calendar"
-          @click="cellZoom <= 3.6 ? (cellZoom += 0.2) : null"
+          @click="zoomIn"
         >
           <ZoomIn class="zoom-in-button" />
         </button>
@@ -174,7 +183,6 @@ onMounted(() => {
   background-color: var(--white1);
   border-radius: 32px;
   box-shadow: inset 0 0 4px 1px var(--secondary);
-  transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
 }
 .calendar-container {
   display: flex;

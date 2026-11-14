@@ -51,11 +51,7 @@ const refresh = () => {
     <OnClickOutside @trigger="modal.close()">
       <div class="modal-body">
         <header class="modal-header">
-          <button
-            class="back-button"
-            :style="formOpen ? 'visibility: visible' : null"
-            @click="formOpen = false"
-          >
+          <button class="back-button" :class="{ visible: formOpen }" @click="formOpen = false">
             <ArrowLeft color="var(--text-light)" size="52" strokeWidth="1.5" />
           </button>
           <h1 class="date-display">
@@ -129,6 +125,9 @@ const refresh = () => {
 }
 .back-button {
   visibility: hidden;
+  &.visible {
+    visibility: visible;
+  }
 }
 .notes-container {
   padding: 8px 64px;

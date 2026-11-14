@@ -63,7 +63,7 @@ if (mode === "edit") {
                   name="title"
                   placeholder="Enter A Title"
                 />
-                <p class="title-input-count" :style="form.title.length > 15 ? 'color: var(--red)' : null">
+                <p class="title-input-count" :class="{ 'over-limit': form.title.length > 15 }">
                   {{ form.title.length }}/15
                 </p>
               </div>
@@ -93,7 +93,7 @@ if (mode === "edit") {
           <div class="options-wrapper">
             <div>
               <label
-                :class="['option-button', form.expirable ? 'expirable-selected' : null]"
+                :class="['option-button', { 'expirable-selected': form.expirable }]"
                 for="expirable"
                 title="Note exprires after due date"
                 >Expirable</label
@@ -109,7 +109,7 @@ if (mode === "edit") {
             </div>
             <div>
               <label
-                :class="['option-button', form.important ? 'important-selected' : null]"
+                :class="['option-button', { 'important-selected': form.important }]"
                 for="important"
                 title="Highlights note as important"
               >
@@ -202,6 +202,9 @@ if (mode === "edit") {
   .title-input-count {
     font-size: 2.5cqi;
     color: var(--grey1);
+    &.over-limit {
+      color: var(--red);
+    }
   }
   input {
     width: 85%;

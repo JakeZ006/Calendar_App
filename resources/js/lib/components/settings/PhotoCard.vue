@@ -29,7 +29,7 @@ const refresh = () => {
             v-for="image in images"
             :key="image.id"
             class="list-item"
-            :class="selectedImage === image.path ? 'selected-photo' : null"
+            :class="{ 'selected-photo': selectedImage === image.path }"
           >
             <button @click="selectedImage = image.path">{{ image.name }}</button>
             <Form action="/deleteImage" method="delete" @success="refresh">
@@ -61,10 +61,7 @@ const refresh = () => {
               </label>
               <input id="image" accept="image/*" name="image" type="file" />
             </div>
-            <button
-              class="upload-button"
-              :style="uploadedImage ? 'background-color: var(--secondary-l)' : null"
-            >
+            <button class="upload-button" :class="{ uploaded: uploadedImage }">
               <ImageUp />
               <p>submit</p>
             </button>
@@ -127,5 +124,8 @@ const refresh = () => {
   border: 2px solid black;
   border-radius: 8px;
   cursor: pointer;
+  &.uploaded {
+    background-color: var(--secondary-l);
+  }
 }
 </style>

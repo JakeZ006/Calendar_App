@@ -24,7 +24,7 @@ const selectedTheme = computed({
     <form>
       <div class="form-wrapper">
         <label
-          :class="['theme-radio-button', 'pill-button', selectedTheme === 'light' ? 'selected-radio' : null]"
+          :class="['theme-radio-button', 'pill-button', { 'selected-radio': selectedTheme === 'light' }]"
           for="light"
         >
           <Sun />
@@ -32,7 +32,7 @@ const selectedTheme = computed({
         </label>
 
         <label
-          :class="['theme-radio-button', 'pill-button', selectedTheme === 'dark' ? 'selected-radio' : null]"
+          :class="['theme-radio-button', 'pill-button', { 'selected-radio': selectedTheme === 'dark' }]"
           for="dark"
         >
           <Moon />

@@ -12,28 +12,28 @@ const important = ref(false);
     <nav class="todo-nav">
       <div class="date-button-wrapper">
         <button
-          :class="['todo-nav-button', filter === 'today' ? 'selected-filter' : null]"
+          :class="['todo-nav-button', { 'selected-filter': filter === 'today' }]"
           title="Show notes for today"
           @click="filter = 'today'"
         >
           Today
         </button>
         <button
-          :class="['todo-nav-button', filter === 'week' ? 'selected-filter' : null]"
+          :class="['todo-nav-button', { 'selected-filter': filter === 'week' }]"
           title="Show notes for this week"
           @click="filter = 'week'"
         >
           7 Days
         </button>
         <button
-          :class="['todo-nav-button', filter === 'month' ? 'selected-filter' : null]"
+          :class="['todo-nav-button', { 'selected-filter': filter === 'month' }]"
           title="Show notes for this month"
           @click="filter = 'month'"
         >
           30 Days
         </button>
         <button
-          :class="['todo-nav-button', filter === 'all' ? 'selected-filter' : null]"
+          :class="['todo-nav-button', { 'selected-filter': filter === 'all' }]"
           title="Show all notes"
           @click="filter = 'all'"
         >
@@ -43,7 +43,7 @@ const important = ref(false);
 
       <label
         class="todo-nav-button important-button"
-        :class="important ? 'important-selected' : null"
+        :class="{ 'important-selected': important }"
         for="important-checkbox"
         title="Filter by important notes"
       >

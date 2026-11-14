@@ -8,7 +8,7 @@ const emit = defineEmits(["editNote", "delete"]);
 </script>
 
 <template>
-  <div :class="['card', note.important ? 'important' : null]">
+  <div :class="['card', { important: note.important }]">
     <header class="card-header">
       <h1 class="title">{{ note.title }}</h1>
       <div class="card-button-wrapper">

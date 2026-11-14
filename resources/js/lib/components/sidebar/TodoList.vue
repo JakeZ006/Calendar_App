@@ -46,7 +46,7 @@ const refresh = () => {
   <ul v-if="notes.length > 0" class="list">
     <li v-for="note in notes" :id="`note-${note.id}`" :key="note.id" class="list-item">
       <details class="details">
-        <summary :class="['title', note.important ? 'note-important' : null]" :title="note.title">
+        <summary :class="['title', { 'note-important': note.important }]" :title="note.title">
           {{ note.title }}
         </summary>
         <div class="details-open">

@@ -32,7 +32,7 @@ onMounted(() => {
       <div v-else>
         <img v-if="firstImage" class="image" :src="firstImage" />
       </div>
-      <div class="overlay" :style="images.length === 0 ? 'opacity:1' : null">
+      <div class="overlay" :class="{ empty: images.length === 0 }">
         <h1>Upload Images</h1>
         <ImageUp color="var(--text-light)" size="32" />
       </div>
@@ -73,6 +73,9 @@ onMounted(() => {
     color: var(--text-light);
   }
   &:hover {
+    opacity: 1;
+  }
+  &.empty {
     opacity: 1;
   }
 }
