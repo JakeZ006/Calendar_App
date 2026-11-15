@@ -8,7 +8,7 @@ import NoteForm from "./NoteForm.vue";
 import NoteCard from "./NoteCard.vue";
 
 const { open, day, notes } = defineProps(["open", "day", "notes"]);
-const emit = defineEmits(["closeModal", "success"]);
+const emit = defineEmits(["close-modal", "success"]);
 
 const date = useDate(day.split("-"));
 
@@ -30,7 +30,7 @@ function addNote() {
 }
 
 function handleClose() {
-  emit("closeModal");
+  emit("close-modal");
   formOpen.value = false;
 }
 
@@ -51,8 +51,8 @@ const refresh = () => {
     <OnClickOutside @trigger="modal.close()">
       <div class="modal-body">
         <header class="modal-header">
-          <button class="back-button" :class="{ visible: formOpen }" @click="formOpen = false">
-            <ArrowLeft color="var(--text-light)" size="52" strokeWidth="1.5" />
+          <button :class="['back-button', { visible: formOpen }]" @click="formOpen = false">
+            <ArrowLeft color="var(--text-light)" size="52" stroke-width="1.5" />
           </button>
           <h1 class="date-display">
             {{ date.dayName }} {{ date.day }}<sup>{{ date.daySuffix }}</sup> {{ date.monthName }}
@@ -61,7 +61,7 @@ const refresh = () => {
           <div class="close-form">
             <form method="dialog">
               <button class="close-button">
-                <X color="var(--text-light)" size="52" strokeWidth="1.5" />
+                <X color="var(--text-light)" size="52" stroke-width="1.5" />
               </button>
             </form>
           </div>
@@ -88,7 +88,7 @@ const refresh = () => {
           </div>
         </div>
 
-        <NoteForm v-if="formOpen" :day="day" :mode="mode" :noteId="noteId" @success="refresh" />
+        <NoteForm v-if="formOpen" :day="day" :mode="mode" :note-id="noteId" @success="refresh" />
       </div>
     </OnClickOutside>
   </dialog>

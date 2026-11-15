@@ -32,7 +32,7 @@ onMounted(() => {
       <div v-else>
         <img class="image" v-if="firstImage" :src="firstImage" />
       </div>
-      <div class="overlay" :class="{ empty: images.length === 0 }">
+      <div :class="['overlay', { empty: images.length === 0 }]">
         <h1>Upload images</h1>
         <ImageUp color="var(--text-light)" size="32" />
       </div>

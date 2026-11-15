@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, Link } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 import { Settings } from "@lucide/vue";
 import Sidebar from "@/lib/components/sidebar/Sidebar.vue";
@@ -9,18 +9,13 @@ const sidebarOpen = ref(true);
 </script>
 
 <template>
-  <Head title="Calendar">
-    <link href="https://rsms.me/" rel="preconnect" />
-    <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
-  </Head>
-
   <Link class="settings-button icon-circle" href="/settings"
     ><Settings color="var(--text-light)" :size="32"
   /></Link>
 
-  <main class="layout">
-    <Sidebar :sidebar-open="sidebarOpen" @toggle-sidebar="sidebarOpen = !sidebarOpen" />
-    <Calendar :sidebar-open="sidebarOpen" />
+  <main :class="['layout', { 'sidebar-closed': !sidebarOpen }]">
+    <Sidebar :sidebar-open />
+    <Calendar :sidebar-open @toggle-sidebar="sidebarOpen = !sidebarOpen" />
   </main>
 </template>
 <style lang="scss" scoped>
@@ -29,7 +24,11 @@ const sidebarOpen = ref(true);
   grid-template-columns: min(25vw, 440px) auto;
   gap: 64px;
   align-items: center;
-  background-color: var(--white5);
+  transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
+}
+
+.sidebar-closed {
+  transform: translateX(calc(-1 * min(25vw, 440px)));
 }
 
 .settings-button {

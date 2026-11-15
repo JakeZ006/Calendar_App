@@ -48,7 +48,8 @@ if (mode === "edit") {
         </h1>
       </div>
       <Form
-        resetOnSuccess
+        class="form"
+        reset-on-success
         :action="formAttrs.action"
         :method="formAttrs.method"
         @success="$emit('success')"
@@ -69,7 +70,7 @@ if (mode === "edit") {
                   name="title"
                   placeholder="Enter a title"
                 />
-                <p class="title-input-count" :class="{ 'over-limit': form.title.length > 15 }">
+                <p :class="['title-input-count', { 'over-limit': form.title.length > 15 }]">
                   {{ form.title.length }}/15
                 </p>
               </div>
@@ -85,9 +86,8 @@ if (mode === "edit") {
                 <option value="Misc">Misc</option>
               </select>
             </div>
+            <p class="note-info-errors form-error">{{ errors.title }}{{ errors.type }}</p>
           </div>
-
-          <p class="note-info-errors form-error">{{ errors.title }}{{ errors.type }}</p>
 
           <div class="content-wrapper">
             <label for="content">Content</label>
@@ -97,9 +97,8 @@ if (mode === "edit") {
               v-model="form.content"
               name="content"
             />
+            <p class="form-error">{{ errors.content }}</p>
           </div>
-
-          <p class="form-error">{{ errors.content }}</p>
 
           <div class="options-wrapper">
             <div>
@@ -178,13 +177,17 @@ if (mode === "edit") {
   font-size: 4cqi;
 }
 
+.form {
+  height: 100%;
+}
+
 .form-inputs-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   gap: 16px;
-  align-items: center;
   width: 70cqi;
-  height: 70cqh;
+  height: 100%;
+  max-height: 80cqh;
   margin: auto;
   margin-top: 8px;
 }
@@ -252,8 +255,9 @@ if (mode === "edit") {
 }
 
 .content-input-box {
+  flex: 1;
   width: 70cqi;
-  height: 30cqb;
+  margin-bottom: 16px;
   padding: 4px 8px;
   border: 3px solid var(--white6);
   border-radius: 12px;

@@ -61,7 +61,7 @@ const refresh = () => {
               </label>
               <input id="image" accept="image/*" name="image" type="file" />
             </div>
-            <button class="upload-button" :class="{ uploaded: uploadedImage }">
+            <button :class="['upload-button', { uploaded: uploadedImage }]">
               <ImageUp />
               <p>Submit</p>
             </button>

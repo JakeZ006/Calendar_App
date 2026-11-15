@@ -10,14 +10,16 @@ export default defineComponent({
 </script>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import { useDate } from "../../composables/date.js";
-import { ZoomIn, ZoomOut } from "@lucide/vue";
+import { ZoomIn, ZoomOut, ChevronLeft } from "@lucide/vue";
 
 import ModalBody from "../modal/ModalBody.vue";
 
+defineEmits(["toggle-sidebar"]);
 const { sidebarOpen } = defineProps(["sidebarOpen"]);
+
 const page = usePage();
 
 const date = useDate();
@@ -85,7 +87,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="calendar-wrapper" :class="{ 'sidebar-closed': !sidebarOpen }">
+  <div :class="['calendar-wrapper', { 'sidebar-closed-calendar': !sidebarOpen }]">
+    <button
+      :class="['toggle-sidebar-button', { 'sidebar-closed-toggle-button': !sidebarOpen }]"
+      @click="$emit('toggle-sidebar')"
+    >
+      <ChevronLeft color="var(--text-light)" :size="42" />
+    </button>
     <div class="calendar-container">
       <div class="day-of-week-container">
         <div class="day-of-week" v-for="dayName in date.names.day" :key="dayName">
@@ -168,7 +176,7 @@ onMounted(() => {
       :day="selectedDay"
       :notes="selectedNotes"
       :open="modalOpen"
-      @closeModal="toggleModal()"
+      @close-modal="toggleModal()"
     />
   </div>
 </template>
@@ -176,12 +184,29 @@ onMounted(() => {
 <style lang="scss" scoped>
 .calendar-wrapper {
   container-type: inline-size;
-  width: calc(100vw - min(25vw, 440px) - 128px);
+  width: calc(100% - 64px);
   padding: clamp(32px, 2vw, 48px);
   padding-bottom: 0;
   border-radius: 32px;
   background-color: var(--white1);
   box-shadow: inset 0 0 4px 1px var(--secondary);
+  transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
+}
+
+.sidebar-closed-calendar {
+  width: calc(100vw - 128px);
+}
+
+.toggle-sidebar-button {
+  position: absolute;
+  top: calc(50vh - 32px);
+  left: calc(min(25vw, 440px) + 36px);
+  display: flex;
+  align-items: center;
+  width: 28px;
+  height: 64px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  background-color: var(--primary);
 }
 
 .calendar-container {

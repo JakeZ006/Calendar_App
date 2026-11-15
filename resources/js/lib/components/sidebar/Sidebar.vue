@@ -7,7 +7,7 @@ const { sidebarOpen } = defineProps(["sidebarOpen"]);
 </script>
 
 <template>
-  <div class="sidebar-wrapper" :class="{ 'sidebar-closed': !sidebarOpen }">
+  <div :class="['sidebar-wrapper', { 'sidebar-closed': !sidebarOpen }]">
     <DateTime />
     <TodoDisplay />
     <Other />
@@ -23,9 +23,5 @@ const { sidebarOpen } = defineProps(["sidebarOpen"]);
   height: 100vh;
   padding: 12px;
   transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
-
-  &.sidebar-closed {
-    transform: translateX(-100%);
-  }
 }
 </style>

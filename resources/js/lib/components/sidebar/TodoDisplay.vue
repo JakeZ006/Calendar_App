@@ -42,8 +42,7 @@ const important = ref(false);
       </div>
 
       <label
-        class="todo-nav-button important-button"
-        :class="{ 'important-selected': important }"
+        :class="['todo-nav-button important-button', { 'important-selected': important }]"
         for="important-checkbox"
         title="Filter by important notes"
       >

@@ -4,7 +4,7 @@ import { Trash, SquarePen } from "@lucide/vue";
 
 const { note } = defineProps(["note"]);
 
-const emit = defineEmits(["editNote", "delete"]);
+const emit = defineEmits(["edit-note", "delete"]);
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const emit = defineEmits(["editNote", "delete"]);
     <header class="card-header">
       <h1 class="title">{{ note.title }}</h1>
       <div class="card-button-wrapper">
-        <button class="card-button edit-button" @click="$emit('editNote', note.id)">
+        <button class="card-button edit-button" @click="$emit('edit-note', note.id)">
           <SquarePen color="var(--text-light)" />
           <p>Edit</p>
         </button>

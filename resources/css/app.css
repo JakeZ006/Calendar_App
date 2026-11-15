@@ -124,6 +124,10 @@ button {
     user-select: none;
 }
 
+body {
+    background-color: var(--white5);
+}
+
 input,
 button,
 textarea,
