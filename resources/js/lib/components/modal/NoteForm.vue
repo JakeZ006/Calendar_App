@@ -43,10 +43,16 @@ if (mode === "edit") {
           <NotebookPen color="var(--text-light)" size="4cqi" />
         </div>
         <h1 class="form-header-title">
-          {{ mode === "edit" ? "Edit note for:" : "Create note for:" }} {{ day.replaceAll("-", "/") }}
+          {{ mode === "edit" ? "Edit note for:" : "Create note for:" }}
+          {{ day.replaceAll("-", "/") }}
         </h1>
       </div>
-      <Form resetOnSuccess :action="formAttrs.action" :method="formAttrs.method" @success="$emit('success')">
+      <Form
+        resetOnSuccess
+        :action="formAttrs.action"
+        :method="formAttrs.method"
+        @success="$emit('success')"
+      >
         <div class="form-inputs-wrapper">
           <input v-if="mode === 'create'" name="for_date" type="hidden" :value="day" />
           <input v-else name="id" type="hidden" :value="noteId" />
@@ -61,7 +67,7 @@ if (mode === "edit") {
                   maxlength="15"
                   minlength="3"
                   name="title"
-                  placeholder="Enter A Title"
+                  placeholder="Enter a title"
                 />
                 <p class="title-input-count" :class="{ 'over-limit': form.title.length > 15 }">
                   {{ form.title.length }}/15
@@ -71,7 +77,7 @@ if (mode === "edit") {
 
             <div class="type-wrapper">
               <label for="type">Type *</label>
-              <select id="type" v-model="form.type" class="type-input-box" name="type">
+              <select class="type-input-box" id="type" v-model="form.type" name="type">
                 <option value="Todo">Todo</option>
                 <option value="Event">Event</option>
                 <option value="Birthday">Birthday</option>
@@ -85,7 +91,12 @@ if (mode === "edit") {
 
           <div class="content-wrapper">
             <label for="content">Content</label>
-            <textarea id="content" v-model="form.content" class="content-input-box" name="content" />
+            <textarea
+              class="content-input-box"
+              id="content"
+              v-model="form.content"
+              name="content"
+            />
           </div>
 
           <p class="form-error">{{ errors.content }}</p>
@@ -95,12 +106,12 @@ if (mode === "edit") {
               <label
                 :class="['option-button', { 'expirable-selected': form.expirable }]"
                 for="expirable"
-                title="Note exprires after due date"
+                title="Note expires after due date"
                 >Expirable</label
               >
               <input
-                v-show="false"
                 id="expirable"
+                v-show="false"
                 v-model="form.expirable"
                 name="expirable"
                 type="checkbox"
@@ -116,8 +127,8 @@ if (mode === "edit") {
                 Important
               </label>
               <input
-                v-show="false"
                 id="important"
+                v-show="false"
                 v-model="form.important"
                 name="important"
                 type="checkbox"
@@ -139,35 +150,39 @@ if (mode === "edit") {
 <style lang="scss" scoped>
 .form-body {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 87%;
 }
+
 .form-box {
   container-type: size;
   width: max(20%, 700px);
   height: clamp(450px, 60cqh, 650px);
-  background-color: var(--white1);
   border-radius: 32px;
+  background-color: var(--white1);
   box-shadow: 0 6px 15px 4px var(--white6);
 }
+
 .form-header {
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   padding: 8px 0;
   border-bottom: 3px solid var(--white6);
 }
+
 .form-header-title {
   font-size: 4cqi;
 }
+
 .form-inputs-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 16px;
+  align-items: center;
   width: 70cqi;
   height: 70cqh;
   margin: auto;
@@ -176,10 +191,11 @@ if (mode === "edit") {
 
 .note-info-container {
   display: flex;
-  justify-content: space-between;
   gap: 32px;
+  justify-content: space-between;
   width: 100%;
 }
+
 .title-wrapper,
 .type-wrapper,
 .content-wrapper {
@@ -188,6 +204,7 @@ if (mode === "edit") {
     font-weight: 700;
   }
 }
+
 .title-input-box {
   display: flex;
   align-items: center;
@@ -195,17 +212,20 @@ if (mode === "edit") {
   width: 42cqi;
   height: 6cqi;
   padding: 0 8px;
-  font-size: 22px;
-  background-color: var(--white3);
   border: 3px solid var(--white6);
   border-radius: 12px;
+  font-size: 22px;
+  background-color: var(--white3);
+
   .title-input-count {
     font-size: 2.5cqi;
     color: var(--grey1);
+
     &.over-limit {
       color: var(--red);
     }
   }
+
   input {
     width: 85%;
   }
@@ -216,14 +236,16 @@ if (mode === "edit") {
   display: flex;
   flex-direction: column;
 }
+
 .type-input-box {
   height: 6cqi;
   padding: 0 8px;
-  font-size: 22px;
-  background-color: var(--white3);
   border: 3px solid var(--white6);
   border-radius: 12px;
+  font-size: 22px;
+  background-color: var(--white3);
 }
+
 .note-info-errors {
   width: 100%;
   margin-top: -12px;
@@ -233,55 +255,62 @@ if (mode === "edit") {
   width: 70cqi;
   height: 30cqb;
   padding: 4px 8px;
-  font-size: 22px;
-  background-color: var(--white3);
   border: 3px solid var(--white6);
   border-radius: 12px;
+  font-size: 22px;
+  background-color: var(--white3);
 }
 
 .options-wrapper {
   display: flex;
-  align-self: start;
   gap: 16px;
+  align-self: start;
   margin-top: -8px;
 }
+
 .option-button {
-  padding: 8px 16px;
-  font-size: 3cqb;
-  border-radius: 10px;
-  outline: 2px solid var(--primary);
   cursor: pointer;
   user-select: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 3cqb;
+  outline: 2px solid var(--primary);
 }
+
 .expirable-selected {
   color: var(--text-light);
   background-color: var(--expirable);
   outline: none;
 }
+
 .important-selected {
   color: var(--text-light);
   background-color: var(--red-l3);
   outline: none;
 }
+
 .submit-button {
+  cursor: pointer;
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   margin-top: auto;
   padding: 8px 16px;
   border-radius: 12px;
   box-shadow: var(--shadow-button);
-  cursor: pointer;
+
   p {
     font-size: 5cqb;
     color: var(--text-light);
   }
+
   &:hover {
     background-color: var(--mix);
     background-image: none;
   }
+
   &:active {
     background-color: var(--primary);
   }

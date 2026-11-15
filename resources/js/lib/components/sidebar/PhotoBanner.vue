@@ -18,22 +18,22 @@ onMounted(() => {
   <div class="banner-box">
     <Link href="/settings">
       <div
-        v-if="images.length > 1"
         class="banner-scroll-track"
+        v-if="images.length > 1"
         :style="`animation-duration: ${scrollspeed}s`"
       >
-        <div v-for="image in images" :key="`${image.id}-1`" class="image-wrapper">
+        <div class="image-wrapper" v-for="image in images" :key="`${image.id}-1`">
           <img class="image" :src="image.path" />
         </div>
-        <div v-for="image in images" :key="`${image.id}-2`" class="image-wrapper">
+        <div class="image-wrapper" v-for="image in images" :key="`${image.id}-2`">
           <img class="image" :src="image.path" />
         </div>
       </div>
       <div v-else>
-        <img v-if="firstImage" class="image" :src="firstImage" />
+        <img class="image" v-if="firstImage" :src="firstImage" />
       </div>
       <div class="overlay" :class="{ empty: images.length === 0 }">
-        <h1>Upload Images</h1>
+        <h1>Upload images</h1>
         <ImageUp color="var(--text-light)" size="32" />
       </div>
     </Link>
@@ -42,39 +42,45 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .banner-box {
-  container-type: size;
   position: relative;
+  container-type: size;
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   border-radius: 16px;
 }
+
 .banner-scroll-track {
   display: inline-flex;
   height: 100%;
   animation: banner-scroll linear infinite;
 }
+
 .image {
   max-width: none;
   height: 100%;
 }
+
 .overlay {
   position: absolute;
-  inset: 0;
   z-index: 50;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
-  background-color: hsla(0, 0%, 0%, 0.5);
+  align-items: center;
+  justify-content: center;
   opacity: 0;
+  background-color: hsl(0 0% 0% / 50%);
+
   h1 {
     font-size: 32px;
     color: var(--text-light);
   }
+
   &:hover {
     opacity: 1;
   }
+
   &.empty {
     opacity: 1;
   }
@@ -84,6 +90,7 @@ onMounted(() => {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }

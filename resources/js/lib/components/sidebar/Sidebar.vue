@@ -18,11 +18,12 @@ const { sidebarOpen } = defineProps(["sidebarOpen"]);
 .sidebar-wrapper {
   container-type: inline-size;
   display: grid;
-  align-items: center;
   gap: 16px;
+  align-items: center;
   height: 100vh;
   padding: 12px;
   transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
+
   &.sidebar-closed {
     transform: translateX(-100%);
   }

@@ -28,19 +28,21 @@ function getQuote() {
 
 <style lang="scss" scoped>
 .quote-wrapper {
+  cursor: pointer;
+  user-select: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2px;
+  align-items: center;
   margin-bottom: 8px;
   padding-bottom: 4px;
   border-bottom: 2px solid var(--white6);
-  cursor: pointer;
-  user-select: none;
+
   .quote-content {
     font-size: 4.5cqi;
     text-align: center;
   }
+
   .quote-info {
     font-size: 4cqi;
     font-weight: 300;

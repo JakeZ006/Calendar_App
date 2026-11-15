@@ -13,23 +13,23 @@ const errors = page.props.errors;
       </header>
       <form class="form-stack" method="post" action="/updateUser">
         <div class="input-box form-field">
-          <label for="oldUsername">Current Username</label>
-          <input id="oldUsername" name="oldUsername" required />
+          <label for="old-username">Current Username</label>
+          <input id="old-username" name="oldUsername" required />
         </div>
         <div class="input-box form-field">
-          <label for="oldPassword">Current Password</label>
-          <input id="oldPassword" name="oldPassword" required type="password" />
+          <label for="old-password">Current Password</label>
+          <input id="old-password" name="oldPassword" required type="password" />
         </div>
         <div class="input-box form-field">
-          <label for="newUsername">New Username</label>
-          <input id="NewUsername" name="newUsername" required />
+          <label for="new-sername">New Username</label>
+          <input id="new-username" name="newUsername" required />
         </div>
         <div class="input-box form-field">
-          <label for="newPassword">New Password</label>
-          <input id="newPassword" name="newPassword" required type="password" />
+          <label for="new-password">New Password</label>
+          <input id="new-password" name="newPassword" required type="password" />
         </div>
         <button class="update-button">Update</button>
-        <p v-for="(val, key) in errors" :key="key" class="form-error">{{ val }}</p>
+        <p class="form-error" v-for="(val, key) in errors" :key="key">{{ val }}</p>
       </form>
     </div>
   </div>
@@ -38,16 +38,18 @@ const errors = page.props.errors;
 .input-box input {
   background-color: var(--white5);
 }
-#newUsername {
+
+#new-username {
   margin-top: 32px;
 }
+
 .update-button {
   width: 100%;
   margin: auto;
   padding: 8px 16px;
+  border-radius: 8px;
   font-size: 22px;
   color: var(--text-light);
   background-color: var(--secondary);
-  border-radius: 8px;
 }
 </style>

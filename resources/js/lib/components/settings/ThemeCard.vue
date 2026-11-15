@@ -24,7 +24,11 @@ const selectedTheme = computed({
     <form>
       <div class="form-wrapper">
         <label
-          :class="['theme-radio-button', 'pill-button', { 'selected-radio': selectedTheme === 'light' }]"
+          :class="[
+            'theme-radio-button',
+            'pill-button',
+            { 'selected-radio': selectedTheme === 'light' },
+          ]"
           for="light"
         >
           <Sun />
@@ -32,15 +36,33 @@ const selectedTheme = computed({
         </label>
 
         <label
-          :class="['theme-radio-button', 'pill-button', { 'selected-radio': selectedTheme === 'dark' }]"
+          :class="[
+            'theme-radio-button',
+            'pill-button',
+            { 'selected-radio': selectedTheme === 'dark' },
+          ]"
           for="dark"
         >
           <Moon />
           <p>Dark</p>
         </label>
       </div>
-      <input v-show="false" id="light" v-model="selectedTheme" name="theme" type="radio" value="light" />
-      <input v-show="false" id="dark" v-model="selectedTheme" name="theme" type="radio" value="dark" />
+      <input
+        id="light"
+        v-show="false"
+        v-model="selectedTheme"
+        name="theme"
+        type="radio"
+        value="light"
+      />
+      <input
+        id="dark"
+        v-show="false"
+        v-model="selectedTheme"
+        name="theme"
+        type="radio"
+        value="dark"
+      />
     </form>
   </div>
 </template>
@@ -49,10 +71,12 @@ const selectedTheme = computed({
   display: flex;
   gap: 16px;
 }
+
 .theme-radio-button {
-  margin-top: 16px;
   cursor: pointer;
+  margin-top: 16px;
 }
+
 .selected-radio {
   background-color: var(--white6);
 }

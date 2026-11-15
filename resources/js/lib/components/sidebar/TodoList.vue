@@ -43,8 +43,8 @@ const refresh = () => {
 </script>
 
 <template>
-  <ul v-if="notes.length > 0" class="list">
-    <li v-for="note in notes" :id="`note-${note.id}`" :key="note.id" class="list-item">
+  <ul class="list" v-if="notes.length > 0">
+    <li class="list-item" v-for="note in notes" :id="`note-${note.id}`" :key="note.id">
       <details class="details">
         <summary :class="['title', { 'note-important': note.important }]" :title="note.title">
           {{ note.title }}
@@ -55,7 +55,12 @@ const refresh = () => {
             <p class="date">{{ note.for_date }}</p>
             <p class="type">● {{ note.type }}</p>
             <div class="delete-button-wrapper">
-              <Form class="delete" :action="`/deleteNote/${note.id}`" method="delete" @success="refresh">
+              <Form
+                class="delete"
+                :action="`/deleteNote/${note.id}`"
+                method="delete"
+                @success="refresh"
+              >
                 <input v-show="false" name="id" :value="note.id" />
                 <button><Trash color="var(--primary)" /></button>
               </Form>
@@ -65,8 +70,8 @@ const refresh = () => {
       </details>
     </li>
   </ul>
-  <p v-else class="empty-message">
-    Nothing to do, add a note by clicking a day on the calendar... or sit back and enjoy the peace.
+  <p class="empty-message" v-else>
+    Nothing to do. Add a note by clicking a day on the calendar, or sit back and enjoy the peace.
   </p>
 </template>
 
@@ -75,27 +80,31 @@ const refresh = () => {
   .list-item {
     display: flex;
     justify-content: space-between;
-    margin: 2px 8px 6px 8px;
+    margin: 2px 8px 6px;
     padding: 4px 12px;
+    border-radius: 8px;
     font-size: 7cqi;
     background-color: var(--white5);
-    border-radius: 8px;
   }
 }
+
 .details {
-  width: 100%;
   cursor: pointer;
+  width: 100%;
 }
+
 .details-open {
   display: flex;
   flex-direction: column;
   margin-left: 26px;
 }
+
 .content {
   font-size: 6cqi;
   font-weight: 500;
   line-height: 8cqi;
 }
+
 .bottom {
   display: flex;
   gap: 4px;
@@ -104,23 +113,29 @@ const refresh = () => {
   padding-top: 4px;
   border-top: 2px solid var(--white1);
 }
+
 .date,
 .type {
   font-size: 5cqi;
   font-weight: 400;
 }
+
 .type {
   margin-left: 16px;
 }
+
 .delete-button-wrapper {
   margin-left: auto;
 }
+
 .note-important {
   color: var(--secondary);
+
   &::marker {
     color: var(--secondary);
   }
 }
+
 .empty-message {
   padding: 8px 16px;
   font-size: 5cqi;

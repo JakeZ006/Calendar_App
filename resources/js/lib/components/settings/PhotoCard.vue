@@ -26,9 +26,9 @@ const refresh = () => {
       <div class="list-wrapper">
         <ul>
           <li
+            class="list-item"
             v-for="image in images"
             :key="image.id"
-            class="list-item"
             :class="{ 'selected-photo': selectedImage === image.path }"
           >
             <button @click="selectedImage = image.path">{{ image.name }}</button>
@@ -63,7 +63,7 @@ const refresh = () => {
             </div>
             <button class="upload-button" :class="{ uploaded: uploadedImage }">
               <ImageUp />
-              <p>submit</p>
+              <p>Submit</p>
             </button>
           </div>
         </Form>
@@ -75,27 +75,32 @@ const refresh = () => {
 .photo-settings {
   container-type: inline-size;
 }
+
 .photo-settings-wrapper {
   display: flex;
 }
+
 .list-wrapper {
   margin-right: 32px;
   padding-right: 16px;
   border-right: 3px solid var(--primary);
 }
+
 .list-item {
   display: flex;
-  justify-content: space-between;
   gap: 16px;
+  justify-content: space-between;
   margin-bottom: 8px;
   padding: 4px 8px;
+  border-radius: 8px;
   font-size: 22px;
   background-color: var(--white6);
-  border-radius: 8px;
+
   &:hover {
     background-color: var(--white5);
   }
 }
+
 .selected-photo {
   outline: 3px solid var(--primary);
 }
@@ -103,19 +108,23 @@ const refresh = () => {
 .upload-photo-box {
   display: flex;
   flex-direction: column;
-  justify-content: end;
   gap: 16px;
+  justify-content: end;
 }
+
 .photo-form-wrapper {
   display: flex;
   justify-content: space-between;
 }
+
 .upload-button-wrapper {
   display: flex;
-  align-items: end;
   gap: 8px;
+  align-items: end;
 }
+
 .upload-button {
+  cursor: pointer;
   display: flex;
   gap: 16px;
   width: 130px;
@@ -123,7 +132,7 @@ const refresh = () => {
   padding: 8px 16px;
   border: 2px solid black;
   border-radius: 8px;
-  cursor: pointer;
+
   &.uploaded {
     background-color: var(--secondary-l);
   }

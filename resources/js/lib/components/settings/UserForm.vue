@@ -16,13 +16,13 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
   <div class="account-form-card">
     <header class="account-form-header">
       <h1 class="account-form-title">{{ title }}</h1>
-      <div v-if="url === '/login'" class="redirect-wrapper">
-        <p>Don't have an account ?</p>
+      <div class="redirect-wrapper" v-if="url === '/login'">
+        <p>Don't have an account?</p>
         <Link class="redirect-button" href="/register">Register here</Link>
       </div>
-      <div v-else class="redirect-wrapper">
-        <p>Already have an account ?</p>
-        <Link class="redirect-button" href="login">Login here</Link>
+      <div class="redirect-wrapper" v-else>
+        <p>Already have an account?</p>
+        <Link class="redirect-button" href="login">Log in here</Link>
       </div>
     </header>
     <form class="form-stack" method="post" :action="url">
@@ -34,8 +34,10 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
         <label for="password">Password</label>
         <input id="password" name="password" required type="password" />
       </div>
-      <button class="login-button button-primary">{{ url === "/register" ? "Register" : "Login" }}</button>
-      <p v-for="(val, key) in errors" :key="key" class="form-error">{{ val }}</p>
+      <button class="login-button button-primary">
+        {{ url === "/register" ? "Register" : "Log in" }}
+      </button>
+      <p class="form-error" v-for="(val, key) in errors" :key="key">{{ val }}</p>
     </form>
   </div>
 </template>
@@ -44,6 +46,7 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
   display: flex;
   gap: 8px;
 }
+
 .redirect-button {
   font-weight: 700;
   text-decoration: underline;
@@ -52,11 +55,12 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
 .input-box input {
   background-color: var(--white6);
 }
+
 .login-button {
   width: fit-content;
   margin-left: auto;
   padding: 8px 16px;
-  font-size: 22px;
   border-radius: 8px;
+  font-size: 22px;
 }
 </style>

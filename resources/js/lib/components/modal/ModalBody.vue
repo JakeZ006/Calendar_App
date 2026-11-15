@@ -47,7 +47,7 @@ const refresh = () => {
 </script>
 
 <template>
-  <dialog ref="modal" class="modal" @close="handleClose">
+  <dialog class="modal" ref="modal" @close="handleClose">
     <OnClickOutside @trigger="modal.close()">
       <div class="modal-body">
         <header class="modal-header">
@@ -67,7 +67,7 @@ const refresh = () => {
           </div>
         </header>
 
-        <div v-if="!formOpen" class="notes-container">
+        <div class="notes-container" v-if="!formOpen">
           <div class="notes-container-title">
             <NotepadText size="3.5cqi" />
             <h2>Notes:</h2>
@@ -83,7 +83,7 @@ const refresh = () => {
 
             <button class="add-note-card" @click="addNote">
               <CirclePlus color="var(--mix)" size="128" />
-              <h1 class="add-note-title">Add Note</h1>
+              <h1 class="add-note-title">Add note</h1>
             </button>
           </div>
         </div>
@@ -96,47 +96,60 @@ const refresh = () => {
 
 <style lang="scss" scoped>
 .modal-body {
-  container-type: size;
+  scrollbar-width: none;
   position: fixed;
   inset: 12vh 10vw;
+  container-type: size;
+  overflow: auto;
   max-width: 1600px;
   margin: auto;
-  overflow: auto;
-  scrollbar-width: none;
-  background-color: var(--white3);
   border-radius: 32px;
+  background-color: var(--white3);
 }
+
 .modal::backdrop {
-  background-color: hsla(0, 0%, 0%, 0.4);
+  background-color: hsl(0 0% 0% / 40%);
 }
+
 .modal-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 12px;
-  background-image: radial-gradient(ellipse 200% 300% at 50% -50%, var(--primary), var(--secondary));
+  background-image: radial-gradient(
+    ellipse 200% 300% at 50% -50%,
+    var(--primary),
+    var(--secondary)
+  );
+
   .date-display {
     font-size: 2.5rem;
     color: var(--text-light);
+
     sup {
       color: var(--text-light);
     }
   }
 }
+
 .back-button {
   visibility: hidden;
+
   &.visible {
     visibility: visible;
   }
 }
+
 .notes-container {
   padding: 8px 64px;
 }
+
 .notes-container-title {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   margin-bottom: 8px;
+
   h2 {
     font-size: 3.5cqi;
     text-decoration: underline;
@@ -155,26 +168,25 @@ const refresh = () => {
 .add-note-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 256px;
-  background-color: var(--white3);
   border: 6px dashed var(--white6);
   border-radius: 12px;
-  &:hover {
-    background-color: var(--white1);
-    .add-note-title {
-      text-decoration: underline;
-      text-decoration-thickness: 3px;
-      text-underline-offset: 3px;
-      color: var(--mix);
-    }
-  }
+  background-color: var(--white3);
 }
+
 .add-note-title {
   font-size: 32px;
   font-weight: 600;
+
+  &:hover {
+    color: var(--mix);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+  }
 }
 </style>

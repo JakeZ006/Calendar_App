@@ -27,15 +27,17 @@ const sidebarOpen = ref(true);
 .layout {
   display: grid;
   grid-template-columns: min(25vw, 440px) auto;
-  align-items: center;
   gap: 64px;
+  align-items: center;
   background-color: var(--white5);
 }
+
 .settings-button {
   position: fixed;
   top: 16px;
   right: 16px;
   width: 48px;
+
   &:hover {
     background-color: var(--mix);
   }

@@ -17,11 +17,11 @@ const errors = page.props.errors;
           <input id="username" name="username" required />
         </div>
         <div class="input-box form-field">
-          <label for="password">password</label>
+          <label for="password">Password</label>
           <input id="password" name="password" required type="password" />
         </div>
         <button class="delete-button">Delete</button>
-        <p v-for="(val, key) in errors" :key="key" class="form-error">{{ val }}</p>
+        <p class="form-error" v-for="(val, key) in errors" :key="key">{{ val }}</p>
       </form>
     </div>
   </div>
@@ -31,9 +31,9 @@ const errors = page.props.errors;
   width: 100%;
   margin: auto;
   padding: 8px 16px;
+  border-radius: 8px;
   font-size: 22px;
   color: var(--text-light);
   background-color: var(--color-red-800);
-  border-radius: 8px;
 }
 </style>

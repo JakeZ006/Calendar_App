@@ -24,6 +24,7 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 .body {
   --page-max-width: min(90vw, 1200px);
 }
+
 .settings-top {
   display: flex;
   justify-content: space-between;

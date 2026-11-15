@@ -88,15 +88,20 @@ onMounted(() => {
   <div class="calendar-wrapper" :class="{ 'sidebar-closed': !sidebarOpen }">
     <div class="calendar-container">
       <div class="day-of-week-container">
-        <div v-for="dayName in date.names.day" :key="dayName" class="day-of-week">
+        <div class="day-of-week" v-for="dayName in date.names.day" :key="dayName">
           <p>{{ dayName.substring(0, 3) }}</p>
         </div>
       </div>
 
-      <div v-dragscroll class="calendar-grid" @dragscrollend="stopDragging" @dragscrollmove="dragging = true">
+      <div
+        class="calendar-grid"
+        v-dragscroll
+        @dragscrollend="stopDragging"
+        @dragscrollmove="dragging = true"
+      >
         <p v-show="false">{{ setCalendar() }}</p>
 
-        <div v-for="i in calendar.dayOfWeek - 1" :key="`spacer-${i}`" class="cell"></div>
+        <div class="cell" v-for="i in calendar.dayOfWeek - 1" :key="`spacer-${i}`"></div>
 
         <div
           v-for="i in calendar.daysInYear * 5"
@@ -112,7 +117,7 @@ onMounted(() => {
         >
           <div class="date-wrapper">
             <p class="day">{{ calendar.day }}</p>
-            <p v-if="calendar.day === 1" class="month">
+            <p class="month" v-if="calendar.day === 1">
               {{ date.names.month[calendar.month - 1].substring(0, 3) }}
             </p>
           </div>
@@ -130,10 +135,10 @@ onMounted(() => {
     </div>
     <div class="calendar-controls">
       <div class="zoom-controls">
-        <button class="zoom-button" title="Zoom out calendar" @click="zoomOut">
+        <button class="zoom-button" title="Zoom out" @click="zoomOut">
           <ZoomOut />
         </button>
-        <button class="zoom-button reset-zoom-button" title="Reset calendar zoom" @click="cellZoom = 1">
+        <button class="zoom-button reset-zoom-button" title="Reset zoom" @click="cellZoom = 1">
           <svg
             fill="none"
             height="24"
@@ -150,11 +155,13 @@ onMounted(() => {
             <path d="m8 9.5-3.5 2" />
           </svg>
         </button>
-        <button class="zoom-button" title="Zoom in calendar" @click="zoomIn">
+        <button class="zoom-button" title="Zoom in" @click="zoomIn">
           <ZoomIn class="zoom-in-button" />
         </button>
       </div>
-      <button class="reset-scroll-button button-primary" @click="todayCellScroll()">Reset Scroll</button>
+      <button class="reset-scroll-button button-primary" @click="todayCellScroll()">
+        Reset scroll
+      </button>
     </div>
     <ModalBody
       v-if="modalOpen"
@@ -172,17 +179,18 @@ onMounted(() => {
   width: calc(100vw - min(25vw, 440px) - 128px);
   padding: clamp(32px, 2vw, 48px);
   padding-bottom: 0;
-  background-color: var(--white1);
   border-radius: 32px;
+  background-color: var(--white1);
   box-shadow: inset 0 0 4px 1px var(--secondary);
 }
+
 .calendar-container {
   display: flex;
-  align-items: center;
   gap: 24px;
+  align-items: center;
   padding: clamp(16px, 1vw, 24px);
-  background-color: var(--white2);
   border-radius: 16px;
+  background-color: var(--white2);
   box-shadow: 0 0 4px 3px var(--white5);
 }
 
@@ -194,17 +202,20 @@ onMounted(() => {
   min-width: clamp(24px, 100%, 48px);
   height: 100%;
   margin-bottom: 24px;
+
   &:first-child {
     border-top: 1px solid var(--primary);
   }
 }
+
 .day-of-week {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  text-align: center;
   border-bottom: 1px solid var(--primary);
+  text-align: center;
+
   p {
     font-size: clamp(16px, 1cqi, 20px);
     font-weight: 700;
@@ -212,61 +223,70 @@ onMounted(() => {
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template-rows: repeat(7, clamp(54px, 4vw, 92px));
-  grid-auto-flow: column;
-  gap: 4px;
-  overflow: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom) + 8px);
-  border-radius: 8px;
   user-select: none;
-  @media screen and (not (-webkit-min-device-pixel-ratio: 0)) {
-    scrollbar-color: var(--scrollbar) transparent;
-  }
+  scroll-padding-left: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom) + 8px);
+  scroll-snap-type: x mandatory;
+  overflow: auto;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, clamp(54px, 4vw, 92px));
+  gap: 4px;
+  border-radius: 8px;
+
   &::-webkit-scrollbar {
     height: 24px;
   }
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
-    background: var(--scrollbar);
-    border-radius: 12px;
     cursor: grab;
+    border-radius: 12px;
+    background: var(--scrollbar);
+
     &:hover {
       background-color: var(--scrollbar-hover);
     }
+
     &:active {
       cursor: grabbing;
     }
   }
+
+  @media screen and (not (min-device-pixel-ratio: 0)) {
+    scrollbar-color: var(--scrollbar) transparent;
+  }
 }
 
 .cell {
+  cursor: pointer;
+  user-select: none;
   container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 4px;
   width: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom));
   padding: 4px;
   border-radius: 4px;
-  cursor: pointer;
-  user-select: none;
+
   &:active {
     cursor: grabbing;
   }
 }
+
 .date-wrapper {
   display: flex;
   justify-content: space-between;
 }
+
 .day,
 .month {
   font-size: clamp(11px, 30cqi, 16px);
   font-weight: 500;
 }
+
 .month {
   margin-right: 4px;
   font-size: clamp(11px, 30cqi, 16px);
@@ -275,27 +295,35 @@ onMounted(() => {
 
 .odd {
   background-color: var(--accent1);
+
   &:hover {
     background-color: var(--accent1-hover);
   }
+
   &:active {
     background-color: var(--accent1-active);
   }
 }
+
 .even {
   background-color: var(--accent2);
+
   &:hover {
     background-color: var(--accent2-hover);
   }
+
   &:active {
     background-color: var(--accent2-active);
   }
 }
+
 .today-cell {
   background-color: var(--accent3);
+
   &:hover {
     background-color: var(--accent3-hover);
   }
+
   &:active {
     background-color: var(--accent3-active);
   }
@@ -304,29 +332,35 @@ onMounted(() => {
 .notes-dots-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 8%;
-  row-gap: 14%;
+  gap: 14% 8%;
 }
+
 .note-dot {
   flex: 1;
   aspect-ratio: 1;
   border-radius: 50%;
 }
+
 .important {
   border: 3px solid var(--red);
 }
+
 .todo {
   background-color: var(--todo);
 }
+
 .event {
   background-color: var(--event);
 }
+
 .birthday {
   background-color: var(--birthday);
 }
+
 .holiday {
   background-color: var(--holiday);
 }
+
 .misc {
   background-color: var(--misc);
 }
@@ -338,40 +372,48 @@ onMounted(() => {
 }
 
 .zoom-controls {
+  overflow: hidden;
   display: flex;
   align-items: center;
-  overflow: hidden;
   border: solid 3px var(--white6);
   border-radius: 999px;
   box-shadow: 0 2px 10px var(--white5);
 }
+
 .zoom-button {
   height: 100%;
   padding: 6px 12px;
   background-color: var(--white5);
+
   &:hover {
     background-color: var(--white3);
   }
+
   &:active {
     background-color: var(--white6);
   }
+
   svg {
     width: clamp(24px, 3cqi, 40px);
     height: clamp(24px, 3cqi, 40px);
   }
 }
+
 .reset-zoom-button {
   border-inline: solid 3px var(--white6);
 }
+
 .reset-scroll-button {
+  cursor: pointer;
   padding: 8px;
   border-radius: 12px;
   box-shadow: var(--shadow-button);
-  cursor: pointer;
+
   &:hover {
     background-color: var(--mix);
     background-image: none;
   }
+
   &:active {
     background-color: var(--primary);
   }
