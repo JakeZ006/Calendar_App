@@ -37,7 +37,7 @@ const notes = computed(() => {
 
 const refresh = () => {
   router.reload({
-    only: ['notes']
+    only: ["notes"],
   });
 };
 </script>

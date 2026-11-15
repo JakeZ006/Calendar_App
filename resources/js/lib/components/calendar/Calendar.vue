@@ -130,11 +130,7 @@ onMounted(() => {
     </div>
     <div class="calendar-controls">
       <div class="zoom-controls">
-        <button
-          class="zoom-button"
-          title="Zoom out calendar"
-          @click="zoomOut"
-        >
+        <button class="zoom-button" title="Zoom out calendar" @click="zoomOut">
           <ZoomOut />
         </button>
         <button class="zoom-button reset-zoom-button" title="Reset calendar zoom" @click="cellZoom = 1">
@@ -154,11 +150,7 @@ onMounted(() => {
             <path d="m8 9.5-3.5 2" />
           </svg>
         </button>
-        <button
-          class="zoom-button"
-          title="Zoom in calendar"
-          @click="zoomIn"
-        >
+        <button class="zoom-button" title="Zoom in calendar" @click="zoomIn">
           <ZoomIn class="zoom-in-button" />
         </button>
       </div>

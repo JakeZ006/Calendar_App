@@ -11,7 +11,7 @@ const uploadedImage = ref(false);
 const refresh = () => {
   selectedImage.value = "";
   router.reload({
-    only: ['images']
+    only: ["images"],
   });
 };
 </script>

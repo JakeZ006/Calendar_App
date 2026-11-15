@@ -11,7 +11,6 @@ onMounted(() => {
     timeString.value = Temporal.Now.instant().toString().substring(11, 19);
   }, 1000);
 });
-
 </script>
 
 <template>

@@ -31,7 +31,7 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
         <input id="username" name="username" required />
       </div>
       <div class="input-box form-field">
-        <label for="password">password</label>
+        <label for="password">Password</label>
         <input id="password" name="password" required type="password" />
       </div>
       <button class="login-button button-primary">{{ url === "/register" ? "Register" : "Login" }}</button>

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->string('type');
             $table->boolean('important')->nullable();
             $table->boolean('expirable')->nullable();
+            $table->string('content')->nullable();
             $table->timestamps();
             $table->date('for_date');
-            $table->string('content')->nullable();
+
         });
     }
 

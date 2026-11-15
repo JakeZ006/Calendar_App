@@ -32,6 +32,7 @@ class NoteController extends Controller
 
     public function store(StoreNoteRequest $request): void
     {
+
         $request->validate([
             'title' => ['required', 'max:15', 'min:3'],
             'type' => ['required'],
