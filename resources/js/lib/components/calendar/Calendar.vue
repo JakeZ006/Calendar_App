@@ -206,7 +206,10 @@ onMounted(() => {
   width: 28px;
   height: 64px;
   border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-  background-color: var(--primary);
+  background-color: var(--scrollbar);
+  &:hover{
+    background-color: var(--scrollbar-hover);
+  }
 }
 
 .calendar-container {
