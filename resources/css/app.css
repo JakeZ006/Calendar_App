@@ -151,7 +151,7 @@ ul {
 }
 
 .settings-title h1 {
-    font-size: 32px;
+    font-size: clamp(1.5rem, 2.2vw, 3rem);
     font-weight: 700;
 }
 
@@ -171,7 +171,6 @@ ul {
     display: grid;
     grid-template-rows: auto 1fr;
 
-    max-width: var(--page-max-width, clamp(800px, 70vw, 1200px));
     min-height: 100vh;
     margin: auto;
 
@@ -192,7 +191,6 @@ ul {
     align-items: center;
     justify-content: center;
 
-    max-width: var(--page-max-width, clamp(800px, 70vw, 1200px));
     min-height: 100vh;
     margin: auto;
     padding: 64px 150px;
@@ -222,7 +220,7 @@ ul {
 }
 
 .account-form-title {
-    font-size: 32px;
+    font-size: clamp(1.5rem, 5.4cqi, 3rem);
     text-decoration: underline;
 }
 
@@ -243,7 +241,7 @@ ul {
     width: 60cqi;
     padding: 0 12px;
     border-radius: var(--radius-xs);
-    font-size: 22px;
+    font-size: clamp(1rem, 3.7cqi, 2.0625rem);
 }
 
 .form-error {
@@ -267,11 +265,11 @@ ul {
     border: 1px solid var(--text-dark);
     border-radius: var(--radius-2xl);
 
-    font-size: 24px;
+    font-size: clamp(1rem, 1.65vw, 2.25rem);
 }
 
 .pill-button p {
-    font-size: 22px;
+    font-size: clamp(1rem, 1.5vw, 2.0625rem);
 }
 
 /* Circular primary icon */

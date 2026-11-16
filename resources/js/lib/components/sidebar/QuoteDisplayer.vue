@@ -35,17 +35,18 @@ function getQuote() {
   gap: 2px;
   align-items: center;
   margin-bottom: 8px;
-  padding-bottom: 4px;
+  padding: 0 5cqw;
   border-bottom: 2px solid var(--white6);
 
   .quote-content {
-    font-size: 4.5cqi;
+    font-size: clamp(0.8rem, 4.5cqi, 2rem);
     text-align: center;
   }
 
   .quote-info {
-    font-size: 4cqi;
+    font-size: clamp(0.6rem, 4cqi, 1.75rem);
     font-weight: 300;
+    text-align: center;
   }
 }
 </style>

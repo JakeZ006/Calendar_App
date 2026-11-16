@@ -93,7 +93,7 @@ const refresh = () => {
   margin-bottom: 8px;
   padding: 4px 8px;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.8cqi, 2.0625rem);
   background-color: var(--white6);
 
   &:hover {

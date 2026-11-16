@@ -1,12 +1,12 @@
 <script setup>
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import { usePage, Form } from "@inertiajs/vue3";
 import { NotebookPen, Send } from "@lucide/vue";
 
 const { mode, day, noteId } = defineProps(["mode", "day", "noteId"]);
 defineEmits(["success"]);
 const page = usePage();
-const errors = page.props.errors;
+const errors = computed(() => page.props.errors ?? []);
 
 const form = reactive({
   title: "",
@@ -58,33 +58,34 @@ if (mode === "edit") {
           <input v-if="mode === 'create'" name="for_date" type="hidden" :value="day" />
           <input v-else name="id" type="hidden" :value="noteId" />
 
-          <div class="note-info-container">
-            <div class="title-wrapper">
-              <label for="title">Title *</label>
-              <div class="title-input-box">
-                <input
-                  id="title"
-                  v-model="form.title"
-                  maxlength="15"
-                  minlength="3"
-                  name="title"
-                  placeholder="Enter a title"
-                />
-                <p :class="['title-input-count', { 'over-limit': form.title.length > 15 }]">
-                  {{ form.title.length }}/15
-                </p>
+          <div class="note-info-wrapper">
+            <div class="note-info-container">
+              <div class="title-wrapper">
+                <label for="title">Title *</label>
+                <div class="title-input-box">
+                  <input
+                    id="title"
+                    v-model="form.title"
+                    maxlength="15"
+                    name="title"
+                    placeholder="Enter a title"
+                  />
+                  <p :class="['title-input-count', { 'over-limit': form.title.length > 15 }]">
+                    {{ form.title.length }}/15
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="type-wrapper">
-              <label for="type">Type *</label>
-              <select class="type-input-box" id="type" v-model="form.type" name="type">
-                <option value="Todo">Todo</option>
-                <option value="Event">Event</option>
-                <option value="Birthday">Birthday</option>
-                <option value="Holiday">Holiday</option>
-                <option value="Misc">Misc</option>
-              </select>
+              <div class="type-wrapper">
+                <label for="type">Type *</label>
+                <select class="type-input-box" id="type" v-model="form.type" name="type">
+                  <option value="Todo">Todo</option>
+                  <option value="Event">Event</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Holiday">Holiday</option>
+                  <option value="Misc">Misc</option>
+                </select>
+              </div>
             </div>
             <p class="note-info-errors form-error">{{ errors.title }}{{ errors.type }}</p>
           </div>
@@ -174,7 +175,7 @@ if (mode === "edit") {
 }
 
 .form-header-title {
-  font-size: 4cqi;
+  font-size: clamp(1.25rem, 4cqi, 2.625rem);
 }
 
 .form {
@@ -203,7 +204,7 @@ if (mode === "edit") {
 .type-wrapper,
 .content-wrapper {
   label {
-    font-size: 18px;
+    font-size: clamp(0.9375rem, 1.25vw, 1.6875rem);
     font-weight: 700;
   }
 }
@@ -217,11 +218,11 @@ if (mode === "edit") {
   padding: 0 8px;
   border: 3px solid var(--white6);
   border-radius: 12px;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 
   .title-input-count {
-    font-size: 2.5cqi;
+    font-size: clamp(0.75rem, 2.5cqi, 1.5rem);
     color: var(--grey1);
 
     &.over-limit {
@@ -245,13 +246,12 @@ if (mode === "edit") {
   padding: 0 8px;
   border: 3px solid var(--white6);
   border-radius: 12px;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 }
 
 .note-info-errors {
   width: 100%;
-  margin-top: -12px;
 }
 
 .content-input-box {
@@ -261,7 +261,7 @@ if (mode === "edit") {
   padding: 4px 8px;
   border: 3px solid var(--white6);
   border-radius: 12px;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 }
 
@@ -277,7 +277,7 @@ if (mode === "edit") {
   user-select: none;
   padding: 8px 16px;
   border-radius: 10px;
-  font-size: 3cqb;
+  font-size: clamp(0.875rem, 3cqb, 1.6875rem);
   outline: 2px solid var(--primary);
 }
 
@@ -306,7 +306,7 @@ if (mode === "edit") {
   box-shadow: var(--shadow-button);
 
   p {
-    font-size: 5cqb;
+    font-size: clamp(1rem, 5cqb, 2.25rem);
     color: var(--text-light);
   }
 

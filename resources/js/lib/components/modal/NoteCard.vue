@@ -53,7 +53,7 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .title {
-  font-size: 7cqi;
+  font-size: clamp(1.25rem, 7cqi, 3rem);
 }
 
 .card-button-wrapper {

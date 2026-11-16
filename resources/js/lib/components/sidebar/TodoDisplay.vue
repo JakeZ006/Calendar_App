@@ -48,7 +48,7 @@ const important = ref(false);
       >
         <SquareExclamationPoint
           class="important-icon"
-          size="28"
+          size="max(30px, 8cqi)"
           :color="important ? 'var(--text-light)' : 'var(--text-dark)'"
         />
       </label>
@@ -93,9 +93,9 @@ const important = ref(false);
 }
 
 .todo-nav-button {
-  height: 40px;
+  height: max(40px, 8cqh);
   padding: 8px 0;
-  font-size: clamp(15px, 4cqi, 18px);
+  font-size: clamp(0.9375rem, 4cqi, 1.6875rem);
   font-weight: 700;
   background-color: var(--white5);
 
@@ -114,8 +114,9 @@ const important = ref(false);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0 10px 0 8px;
+  min-width: 10cqi;
+  height: max(40px, 8cqh);
+  padding: 0 12px 0 8px;
   border-left: 3px solid var(--mix);
 }
 

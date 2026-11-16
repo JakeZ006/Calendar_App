@@ -10,10 +10,10 @@ export default defineComponent({
 </script>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import { useDate } from "../../composables/date.js";
-import { ZoomIn, ZoomOut, ChevronLeft } from "@lucide/vue";
+import { ZoomIn, ZoomOut } from "@lucide/vue";
 
 import ModalBody from "../modal/ModalBody.vue";
 
@@ -88,12 +88,6 @@ onMounted(() => {
 
 <template>
   <div :class="['calendar-wrapper', { 'sidebar-closed-calendar': !sidebarOpen }]">
-    <button
-      :class="['toggle-sidebar-button', { 'sidebar-closed-toggle-button': !sidebarOpen }]"
-      @click="$emit('toggle-sidebar')"
-    >
-      <ChevronLeft color="var(--text-light)" :size="42" />
-    </button>
     <div class="calendar-container">
       <div class="day-of-week-container">
         <div class="day-of-week" v-for="dayName in date.names.day" :key="dayName">
@@ -142,6 +136,39 @@ onMounted(() => {
       </div>
     </div>
     <div class="calendar-controls">
+      <div class="left-controls-wrapper">
+        <button
+          class="left-controls-button button-primary"
+          @click="$emit('toggle-sidebar')"
+          title="Toggle sidebar"
+        >
+          <svg
+            :class="[
+              'lucide',
+              'lucide-square-arrow-left-exit',
+              'preview-icon',
+              { 'sidebar-closed-toggle-button': !sidebarOpen },
+            ]"
+            xmlns="http://www.w3.org/2000/svg"
+            width="max(26px, 2.5cqh)"
+            height="max(26px, 2.5cqh)"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--text-light)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M13 12H3" />
+            <path d="M3 17.67V19a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v1.33" />
+            <path d="m7 8-4 4 4 4" />
+          </svg>
+        </button>
+        <button class="left-controls-button button-primary" @click="todayCellScroll()">
+          Reset scroll
+        </button>
+      </div>
+
       <div class="zoom-controls">
         <button class="zoom-button" title="Zoom out" @click="zoomOut">
           <ZoomOut />
@@ -167,9 +194,6 @@ onMounted(() => {
           <ZoomIn class="zoom-in-button" />
         </button>
       </div>
-      <button class="reset-scroll-button button-primary" @click="todayCellScroll()">
-        Reset scroll
-      </button>
     </div>
     <ModalBody
       v-if="modalOpen"
@@ -184,7 +208,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .calendar-wrapper {
   container-type: inline-size;
-  width: calc(100% - 64px);
+  justify-self: center;
+  width: calc(100vw - min(25vw, 700px) - 128px + 1.5vw);
   padding: clamp(32px, 2vw, 48px);
   padding-bottom: 0;
   border-radius: 32px;
@@ -195,21 +220,7 @@ onMounted(() => {
 
 .sidebar-closed-calendar {
   width: calc(100vw - 128px);
-}
-
-.toggle-sidebar-button {
-  position: absolute;
-  top: calc(50vh - 32px);
-  left: calc(min(25vw, 440px) + 36px);
-  display: flex;
-  align-items: center;
-  width: 28px;
-  height: 64px;
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-  background-color: var(--scrollbar);
-  &:hover{
-    background-color: var(--scrollbar-hover);
-  }
+  margin-left: 92px;
 }
 
 .calendar-container {
@@ -225,27 +236,23 @@ onMounted(() => {
 .day-of-week-container {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(7, clamp(54px, 4vw, 92px));
+  grid-template-rows: repeat(7, clamp(54px, 4vw, 128px));
   gap: 4px;
+  width: min(70%, 800px);
   min-width: clamp(24px, 100%, 48px);
-  height: 100%;
   margin-bottom: 24px;
-
-  &:first-child {
-    border-top: 1px solid var(--primary);
-  }
+  border-top: 1px solid var(--primary);
 }
 
 .day-of-week {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
   border-bottom: 1px solid var(--primary);
   text-align: center;
 
   p {
-    font-size: clamp(16px, 1cqi, 20px);
+    font-size: clamp(1rem, 1.5cqi, 2rem);
     font-weight: 700;
   }
 }
@@ -257,7 +264,7 @@ onMounted(() => {
   overflow: auto;
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(7, clamp(54px, 4vw, 92px));
+  grid-template-rows: repeat(7, clamp(54px, 4vw, 128px));
   gap: 4px;
   border-radius: 8px;
 
@@ -295,7 +302,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom));
+  width: calc(clamp(42px, 3vw, 84px) * v-bind(cellZoom));
   padding: 4px;
   border-radius: 4px;
 
@@ -311,13 +318,13 @@ onMounted(() => {
 
 .day,
 .month {
-  font-size: clamp(11px, 30cqi, 16px);
+  font-size: clamp(0.6875rem, 30cqi, 1.5rem);
   font-weight: 500;
 }
 
 .month {
   margin-right: 4px;
-  font-size: clamp(11px, 30cqi, 16px);
+  font-size: clamp(0.6875rem, 30cqi, 1.5rem);
   font-weight: 700;
 }
 
@@ -370,7 +377,7 @@ onMounted(() => {
 }
 
 .important {
-  border: 3px solid var(--red);
+  border: 2px solid var(--red);
 }
 
 .todo {
@@ -399,6 +406,48 @@ onMounted(() => {
   padding: clamp(16px, 1vw, 24px) 0;
 }
 
+.left-controls-wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.left-controls-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: clamp(01rem, 2cqi, 2rem);
+  box-shadow: var(--shadow-button);
+
+  &:hover {
+    background-color: var(--mix);
+    background-image: none;
+  }
+
+  &:active {
+    background-color: var(--primary);
+  }
+}
+
+.lucide-square-arrow-left-exit {
+  transition: transform 600ms;
+  transition-timing-function: linear(
+    0,
+    -0.041 20.4%,
+    0.006 30.8%,
+    0.199 41.6%,
+    0.743 56.4%,
+    0.956 66%,
+    1.04 78%,
+    1
+  );
+}
+
+.sidebar-closed-toggle-button {
+  transform: rotateY(180deg);
+}
+
 .zoom-controls {
   overflow: hidden;
   display: flex;
@@ -422,28 +471,12 @@ onMounted(() => {
   }
 
   svg {
-    width: clamp(24px, 3cqi, 40px);
-    height: clamp(24px, 3cqi, 40px);
+    width: clamp(24px, 3cqi, 50px);
+    height: clamp(24px, 3cqi, 50px);
   }
 }
 
 .reset-zoom-button {
   border-inline: solid 3px var(--white6);
-}
-
-.reset-scroll-button {
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 12px;
-  box-shadow: var(--shadow-button);
-
-  &:hover {
-    background-color: var(--mix);
-    background-image: none;
-  }
-
-  &:active {
-    background-color: var(--primary);
-  }
 }
 </style>

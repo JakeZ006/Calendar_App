@@ -61,6 +61,6 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
   margin-left: auto;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.5vw, 2.0625rem);
 }
 </style>

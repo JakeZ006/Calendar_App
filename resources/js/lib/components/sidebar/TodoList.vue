@@ -62,7 +62,9 @@ const refresh = () => {
                 @success="refresh"
               >
                 <input v-show="false" name="id" :value="note.id" />
-                <button><Trash color="var(--primary)" /></button>
+                <button class="delete-button">
+                  <Trash color="var(--primary)" size="min(7cqi, 48px)" />
+                </button>
               </Form>
             </div>
           </div>
@@ -83,7 +85,7 @@ const refresh = () => {
     margin: 2px 8px 6px;
     padding: 4px 12px;
     border-radius: 8px;
-    font-size: 7cqi;
+    font-size: clamp(0.875rem, 7cqi, 4rem);
     background-color: var(--white5);
   }
 }
@@ -96,11 +98,12 @@ const refresh = () => {
 .details-open {
   display: flex;
   flex-direction: column;
-  margin-left: 26px;
+  margin-inline: 8cqi;
 }
 
 .content {
-  font-size: 6cqi;
+  padding-bottom: 8px;
+  font-size: clamp(0.875rem, 6cqi, 2.4rem);
   font-weight: 500;
   line-height: 8cqi;
 }
@@ -108,15 +111,15 @@ const refresh = () => {
 .bottom {
   display: flex;
   gap: 4px;
+  align-items: center;
   width: 100%;
-  margin-top: 4px;
-  padding-top: 4px;
+  padding: 8px;
   border-top: 2px solid var(--white1);
 }
 
 .date,
 .type {
-  font-size: 5cqi;
+  font-size: clamp(0.75rem, 5cqi, 2rem);
   font-weight: 400;
 }
 
@@ -126,6 +129,11 @@ const refresh = () => {
 
 .delete-button-wrapper {
   margin-left: auto;
+}
+
+.delete-button {
+  display: flex;
+  align-items: center;
 }
 
 .note-important {
@@ -138,7 +146,7 @@ const refresh = () => {
 
 .empty-message {
   padding: 8px 16px;
-  font-size: 5cqi;
+  font-size: clamp(0.75rem, 5cqi, 1.5rem);
   color: var(--grey);
 }
 </style>

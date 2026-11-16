@@ -123,7 +123,7 @@ const refresh = () => {
   );
 
   .date-display {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 2.5vw, 3.75rem);
     color: var(--text-light);
 
     sup {
@@ -151,7 +151,7 @@ const refresh = () => {
   margin-bottom: 8px;
 
   h2 {
-    font-size: 3.5cqi;
+    font-size: clamp(1.25rem, 3.5cqi, 3.375rem);
     text-decoration: underline;
     text-decoration-thickness: 3px;
     text-underline-offset: 6px;
@@ -179,7 +179,7 @@ const refresh = () => {
 }
 
 .add-note-title {
-  font-size: 32px;
+  font-size: clamp(1.5rem, 2.2vw, 3rem);
   font-weight: 600;
 
   &:hover {

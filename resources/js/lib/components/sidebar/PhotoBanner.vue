@@ -73,7 +73,7 @@ onMounted(() => {
   background-color: hsl(0 0% 0% / 50%);
 
   h1 {
-    font-size: 32px;
+    font-size: clamp(1.25rem, 8cqi, 3rem);
     color: var(--text-light);
   }
 

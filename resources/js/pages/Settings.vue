@@ -22,7 +22,7 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 
 <style lang="scss" scoped>
 .body {
-  --page-max-width: min(90vw, 1200px);
+  width: min(80vw, 2000px);
 }
 
 .settings-top {

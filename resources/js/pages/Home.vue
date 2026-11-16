@@ -21,14 +21,13 @@ const sidebarOpen = ref(true);
 <style lang="scss" scoped>
 .layout {
   display: grid;
-  grid-template-columns: min(25vw, 440px) auto;
-  gap: 64px;
+  grid-template-columns: min(22vw, 700px) auto;
   align-items: center;
   transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
 }
 
 .sidebar-closed {
-  transform: translateX(calc(-1 * min(25vw, 440px)));
+  transform: translateX(calc(-1 * min(25vw, 700px)));
 }
 
 .settings-button {
