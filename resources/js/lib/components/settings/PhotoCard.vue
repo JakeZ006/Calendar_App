@@ -43,7 +43,7 @@ const refresh = () => {
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img v-if="selectedImage" :src="selectedImage" />
+          <img v-if="selectedImage" :src="selectedImage" class="image" />
         </div>
 
         <Form
@@ -114,8 +114,8 @@ const refresh = () => {
   width: 100%;
 }
 
-.photo-box {
-  max-height: 50vh;
+.image{
+  max-height: 40vh;
 }
 
 .photo-form-wrapper {
