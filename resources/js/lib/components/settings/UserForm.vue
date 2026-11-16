@@ -44,7 +44,7 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
 <style lang="scss" scoped>
 .redirect-wrapper {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.375rem, 0.6vw, 1.25rem);
 }
 
 .redirect-button {
@@ -59,8 +59,8 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
 .login-button {
   width: fit-content;
   margin-left: auto;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: clamp(1rem, 1.5vw, 2.0625rem);
+  padding: clamp(0.375rem, 0.55vw, 1.25rem) clamp(0.75rem, 1.1vw, 2.5rem);
+  border-radius: clamp(0.375rem, 0.6vw, 1.25rem);
+  font-size: clamp(0.875rem, 1.5vw, 2.0625rem);
 }
 </style>

@@ -158,20 +158,20 @@ if (mode === "edit") {
 
 .form-box {
   container-type: size;
-  width: max(20%, 700px);
-  height: clamp(450px, 60cqh, 650px);
-  border-radius: 32px;
+  width: clamp(22rem, 61cqi, 72rem);
+  height: clamp(28rem, 65cqh, 60rem);
+  border-radius: clamp(1.5rem, 2.2vw, 3.5rem);
   background-color: var(--white1);
   box-shadow: 0 6px 15px 4px var(--white6);
 }
 
 .form-header {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
   align-items: center;
   justify-content: center;
-  padding: 8px 0;
-  border-bottom: 3px solid var(--white6);
+  padding: clamp(0.5rem, 0.55vw, 1.25rem) 0;
+  border-bottom: clamp(2px, 0.2vw, 5px) solid var(--white6);
 }
 
 .form-header-title {
@@ -185,17 +185,17 @@ if (mode === "edit") {
 .form-inputs-wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 16px;
-  width: 70cqi;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
+  width: 78cqi;
   height: 100%;
   max-height: 80cqh;
   margin: auto;
-  margin-top: 8px;
+  margin-top: clamp(0.5rem, 0.55vw, 1.25rem);
 }
 
 .note-info-container {
   display: flex;
-  gap: 32px;
+  gap: clamp(1rem, 2.2vw, 4rem);
   justify-content: space-between;
   width: 100%;
 }
@@ -215,9 +215,9 @@ if (mode === "edit") {
   justify-content: space-between;
   width: 42cqi;
   height: 6cqi;
-  padding: 0 8px;
-  border: 3px solid var(--white6);
-  border-radius: 12px;
+  padding: 0 clamp(0.5rem, 0.55vw, 1.25rem);
+  border: clamp(2px, 0.2vw, 5px) solid var(--white6);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
   font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 
@@ -243,9 +243,9 @@ if (mode === "edit") {
 
 .type-input-box {
   height: 6cqi;
-  padding: 0 8px;
-  border: 3px solid var(--white6);
-  border-radius: 12px;
+  padding: 0 clamp(0.5rem, 0.55vw, 1.25rem);
+  border: clamp(2px, 0.2vw, 5px) solid var(--white6);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
   font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 }
@@ -256,29 +256,29 @@ if (mode === "edit") {
 
 .content-input-box {
   flex: 1;
-  width: 70cqi;
-  margin-bottom: 16px;
-  padding: 4px 8px;
-  border: 3px solid var(--white6);
-  border-radius: 12px;
+  width: 100%;
+  margin-bottom: clamp(1rem, 1.1vw, 2.5rem);
+  padding: clamp(0.25rem, 0.3vw, 0.625rem) clamp(0.5rem, 0.55vw, 1.25rem);
+  border: clamp(2px, 0.2vw, 5px) solid var(--white6);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
   font-size: clamp(1rem, 1.5vw, 2.0625rem);
   background-color: var(--white3);
 }
 
 .options-wrapper {
   display: flex;
-  gap: 16px;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
   align-self: start;
-  margin-top: -8px;
+  margin-top: calc(clamp(0.5rem, 0.55vw, 1.25rem) * -1);
 }
 
 .option-button {
   cursor: pointer;
   user-select: none;
-  padding: 8px 16px;
-  border-radius: 10px;
+  padding: clamp(0.5rem, 0.55vw, 1.25rem) clamp(1rem, 1.1vw, 2.5rem);
+  border-radius: clamp(0.625rem, 0.7vw, 1.5rem);
   font-size: clamp(0.875rem, 3cqb, 1.6875rem);
-  outline: 2px solid var(--primary);
+  outline: clamp(1px, 0.15vw, 3px) solid var(--primary);
 }
 
 .expirable-selected {
@@ -296,13 +296,13 @@ if (mode === "edit") {
 .submit-button {
   cursor: pointer;
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
   align-items: center;
   justify-content: center;
   width: 100%;
   margin-top: auto;
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: clamp(0.5rem, 0.55vw, 1.25rem) clamp(1rem, 1.1vw, 2.5rem);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
   box-shadow: var(--shadow-button);
 
   p {

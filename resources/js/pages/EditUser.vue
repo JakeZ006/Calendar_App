@@ -40,15 +40,15 @@ const errors = page.props.errors;
 }
 
 #new-username {
-  margin-top: 32px;
+  margin-top: clamp(0.75rem, 2.2vw, 4rem);
 }
 
 .update-button {
   width: 100%;
   margin: auto;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: clamp(1rem, 1.5vw, 2.0625rem);
+  padding: clamp(0.375rem, 0.55vw, 1.25rem) clamp(0.75rem, 1.1vw, 2.5rem);
+  border-radius: clamp(0.375rem, 0.6vw, 1.25rem);
+  font-size: clamp(0.875rem, 1.5vw, 2.0625rem);
   color: var(--text-light);
   background-color: var(--secondary);
 }

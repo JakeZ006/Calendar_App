@@ -14,8 +14,8 @@ import { Link } from "@inertiajs/vue3";
         <svg
           viewBox="0 0 1024 1024"
           fill="none"
-          width="32"
-          height="32"
+          width="2.5vh"
+          height="2.5vh"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -28,11 +28,11 @@ import { Link } from "@inertiajs/vue3";
         </svg>
       </a>
       <Link class="nav-button" href="/home">
-        <Home color="var(--text-light)" />
+        <Home color="var(--text-light)" size="2.5vh" />
         <p>Home</p>
       </Link>
       <Link class="nav-button" as="button" href="/logout" method="post">
-        <LogOut color="var(--text-light)" />
+        <LogOut color="var(--text-light)" size="2.5vh" />
         <p>Log out</p>
       </Link>
     </div>
@@ -44,14 +44,14 @@ import { Link } from "@inertiajs/vue3";
   align-items: center;
   justify-content: end;
   width: 100%;
-  height: 64px;
+  height: max(64px, 5vh);
   padding: 0 16px;
   background-image: var(--gradient-primary);
 }
 
 .nav-buttons-right {
   display: flex;
-  gap: 16px;
+  gap: 1vw;
   padding: 0 8px;
 }
 
@@ -62,7 +62,7 @@ import { Link } from "@inertiajs/vue3";
   padding: 4px 8px;
   border: 2px solid var(--text-light);
   border-radius: 16px;
-  font-size: clamp(0.9375rem, 1.4vw, 1.875rem);
+  font-size: clamp(1.3rem, 1.2vw, 3rem);
 
   &:hover {
     background-color: var(--mix);

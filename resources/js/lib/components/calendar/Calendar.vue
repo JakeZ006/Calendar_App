@@ -209,24 +209,25 @@ onMounted(() => {
 .calendar-wrapper {
   container-type: inline-size;
   justify-self: center;
-  width: calc(100vw - min(25vw, 700px) - 128px + 1.5vw);
+  width: calc(100vw - min(18vw, 700px) - min(256px, 10vw));
   padding: clamp(32px, 2vw, 48px);
   padding-bottom: 0;
   border-radius: 32px;
   background-color: var(--white1);
   box-shadow: inset 0 0 4px 1px var(--secondary);
-  transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
+  transition: width cubic-bezier(0.16, 1, 0.3, 1) 1000ms;
 }
 
 .sidebar-closed-calendar {
-  width: calc(100vw - 128px);
-  margin-left: 92px;
+  width: calc(100vw - min(256px, 10vw));
+  margin-left: min(128px, 5vw);
 }
 
 .calendar-container {
   display: flex;
   gap: 24px;
   align-items: center;
+  max-height: 55vh;
   padding: clamp(16px, 1vw, 24px);
   border-radius: 16px;
   background-color: var(--white2);
@@ -236,7 +237,7 @@ onMounted(() => {
 .day-of-week-container {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(7, clamp(54px, 4vw, 128px));
+  grid-template-rows: repeat(7, clamp(48px, 6vh, 256px));
   gap: 4px;
   width: min(70%, 800px);
   min-width: clamp(24px, 100%, 48px);
@@ -264,8 +265,8 @@ onMounted(() => {
   overflow: auto;
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(7, clamp(54px, 4vw, 128px));
-  gap: 4px;
+  grid-template-rows: repeat(7, clamp(48px, 6vh, 256px));
+  gap: clamp(4px, 0.2vw, 8px);
   border-radius: 8px;
 
   &::-webkit-scrollbar {
@@ -302,9 +303,9 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: calc(clamp(42px, 3vw, 84px) * v-bind(cellZoom));
+  width: calc(clamp(38px, 2.5vw, 84px) * v-bind(cellZoom));
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 12%;
 
   &:active {
     cursor: grabbing;

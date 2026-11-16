@@ -22,7 +22,12 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 
 <style lang="scss" scoped>
 .body {
-  width: min(80vw, 2000px);
+  width: min(80vw, 3400px);
+}
+
+.main {
+  gap: clamp(1.5rem, 2.2vw, 4rem);
+  padding: clamp(2rem, 4.4vw, 8rem) clamp(3rem, 10.4vw, 18rem);
 }
 
 .settings-top {

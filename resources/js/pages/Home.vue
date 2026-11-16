@@ -9,9 +9,9 @@ const sidebarOpen = ref(true);
 </script>
 
 <template>
-  <Link class="settings-button icon-circle" href="/settings"
-    ><Settings color="var(--text-light)" :size="32"
-  /></Link>
+  <Link class="settings-button icon-circle" href="/settings">
+    <Settings color="var(--text-light)" size="2vw"/>
+  </Link>
 
   <main :class="['layout', { 'sidebar-closed': !sidebarOpen }]">
     <Sidebar :sidebar-open />
@@ -21,20 +21,20 @@ const sidebarOpen = ref(true);
 <style lang="scss" scoped>
 .layout {
   display: grid;
-  grid-template-columns: min(22vw, 700px) auto;
+  grid-template-columns: min(18vw, 700px) auto;
   align-items: center;
-  transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
+  transition: all cubic-bezier(0.16, 1, 0.3, 1) 1000ms;
 }
 
 .sidebar-closed {
-  transform: translateX(calc(-1 * min(25vw, 700px)));
+  transform: translateX(calc(-1 * min(18vw, 700px)));
 }
 
 .settings-button {
   position: fixed;
   top: 16px;
   right: 16px;
-  width: 48px;
+  padding: 0.25vw;
 
   &:hover {
     background-color: var(--mix);

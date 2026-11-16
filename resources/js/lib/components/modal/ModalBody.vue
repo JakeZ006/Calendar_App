@@ -101,9 +101,9 @@ const refresh = () => {
   inset: 12vh 10vw;
   container-type: size;
   overflow: auto;
-  max-width: 1600px;
+  max-width: 2600px;
   margin: auto;
-  border-radius: 32px;
+  border-radius: clamp(1.5rem, 2.2vw, 3.5rem);
   background-color: var(--white3);
 }
 
@@ -115,7 +115,7 @@ const refresh = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: clamp(0.75rem, 0.85vw, 2rem);
   background-image: radial-gradient(
     ellipse 200% 300% at 50% -50%,
     var(--primary),
@@ -132,6 +132,12 @@ const refresh = () => {
   }
 }
 
+.modal-header svg {
+  flex-shrink: 0;
+  width: clamp(2rem, 3.6vw, 5.5rem);
+  height: clamp(2rem, 3.6vw, 5.5rem);
+}
+
 .back-button {
   visibility: hidden;
 
@@ -141,41 +147,46 @@ const refresh = () => {
 }
 
 .notes-container {
-  padding: 8px 64px;
+  padding: clamp(0.5rem, 0.6vw, 1.5rem) clamp(1rem, 4.4vw, 9rem);
 }
 
 .notes-container-title {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: clamp(0.5rem, 0.6vw, 1.25rem);
 
   h2 {
     font-size: clamp(1.25rem, 3.5cqi, 3.375rem);
     text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 6px;
+    text-decoration-thickness: clamp(2px, 0.2vw, 5px);
+    text-underline-offset: clamp(0.25rem, 0.45vw, 0.75rem);
   }
 }
 
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(22rem, 21.5vw, 44rem), 1fr));
   gap: 2%;
-  padding: 16px;
+  padding: clamp(1rem, 1.1vw, 2.5rem);
 }
 
 .add-note-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 256px;
-  border: 6px dashed var(--white6);
-  border-radius: 12px;
+  padding: 8px;
+  border: clamp(3px, 0.4vw, 8px) dashed var(--white6);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
   background-color: var(--white3);
+}
+
+.add-note-card svg {
+  width: clamp(4rem, 8.9vw, 14rem);
+  height: clamp(4rem, 8.9vw, 14rem);
 }
 
 .add-note-title {
@@ -185,8 +196,8 @@ const refresh = () => {
   &:hover {
     color: var(--mix);
     text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 3px;
+    text-decoration-thickness: clamp(2px, 0.2vw, 5px);
+    text-underline-offset: clamp(0.25rem, 0.3vw, 0.5rem);
   }
 }
 </style>

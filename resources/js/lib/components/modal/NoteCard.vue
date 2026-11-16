@@ -39,10 +39,10 @@ const emit = defineEmits(["edit-note", "delete"]);
   container-type: size;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  height: 256px;
-  padding: 16px;
-  border-radius: 12px;
+  gap: clamp(0.5rem, 1.1vw, 2.5rem);
+  padding: clamp(1rem, 1.1vw, 2.5rem);
+  border-radius: clamp(0.75rem, 0.85vw, 2rem);
+  font-size: clamp(0.875rem, 1.1vw, 1.5rem);
   background-color: var(--white1);
   box-shadow: -3px 2px 5px 1px var(--white6);
 }
@@ -58,18 +58,24 @@ const emit = defineEmits(["edit-note", "delete"]);
 
 .card-button-wrapper {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
 }
 
 .card-button {
   cursor: pointer;
   display: flex;
-  gap: 8px;
+  gap: clamp(0.25rem, 0.4vw, 0.75rem);
   align-items: center;
   justify-content: center;
-  height: 42px;
-  padding: 8px 12px;
+  min-height: clamp(2.25rem, 2.5vw, 4.5rem);
+  padding: clamp(0.25rem, 0.3vw, 0.75rem) clamp(0.5rem, 0.6vw, 1.5rem);
   border-radius: 99px;
+}
+
+.card-button svg {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
 }
 
 .edit-button {
@@ -89,7 +95,7 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .delete-button {
-  border: 3px solid var(--red);
+  border: clamp(2px, 0.2vw, 5px) solid var(--red);
   background-color: var(--red-l2);
 
   &:hover {
@@ -103,14 +109,14 @@ const emit = defineEmits(["edit-note", "delete"]);
 
 .tag-wrapper {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
   margin-top: auto;
 }
 
 .note-tag {
   display: flex;
-  padding: 4px 8px;
-  border: 1px solid var(--text-dark);
+  padding: clamp(0.25rem, 0.3vw, 0.625rem) clamp(0.5rem, 0.6vw, 1.25rem);
+  border: clamp(1px, 0.08vw, 2px) solid var(--text-dark);
   border-radius: 99px;
 }
 
@@ -119,15 +125,15 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .expirable-tag {
-  border: 1px solid var(--expirable);
+  border: clamp(1px, 0.08vw, 2px) solid var(--expirable);
 }
 
 .important-tag {
-  border: 1px solid var(--red);
+  border: clamp(1px, 0.08vw, 2px) solid var(--red);
 }
 
 .important {
-  border: 3px solid var(--secondary);
+  border: clamp(2px, 0.2vw, 5px) solid var(--secondary);
 }
 
 .todo {

@@ -59,9 +59,10 @@ const refresh = () => {
                 <Upload />
                 <p>Upload</p>
               </label>
-              <input id="image" accept="image/*" name="image" type="file" />
+              <input class="image-input" id="image" accept="image/*" name="image" type="file" />
+              <br />
             </div>
-            <button :class="['upload-button', { uploaded: uploadedImage }]">
+            <button :class="['upload-button', 'submit-button', { uploaded: uploadedImage }]">
               <ImageUp />
               <p>Submit</p>
             </button>
@@ -81,19 +82,19 @@ const refresh = () => {
 }
 
 .list-wrapper {
-  margin-right: 32px;
-  padding-right: 16px;
-  border-right: 3px solid var(--primary);
+  margin-right: clamp(1rem, 2.2vw, 4rem);
+  padding-right: clamp(1rem, 1.1vw, 2.5rem);
+  border-right: clamp(2px, 0.2vw, 4px) solid var(--primary);
 }
 
 .list-item {
   display: flex;
-  gap: 16px;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
   justify-content: space-between;
-  margin-bottom: 8px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: clamp(1rem, 1.8cqi, 2.0625rem);
+  margin-bottom: clamp(0.5rem, 0.55vw, 1.25rem);
+  padding: clamp(0.25rem, 0.3vw, 0.625rem) clamp(0.5rem, 0.6vw, 1.25rem);
+  border-radius: clamp(0.5rem, 0.6vw, 1.25rem);
+  font-size: clamp(1.2rem, 1.8cqi, 3rem);
   background-color: var(--white6);
 
   &:hover {
@@ -102,14 +103,19 @@ const refresh = () => {
 }
 
 .selected-photo {
-  outline: 3px solid var(--primary);
+  outline: clamp(2px, 0.2vw, 5px) solid var(--primary);
 }
 
 .upload-photo-box {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
   justify-content: end;
+  width: 100%;
+}
+
+.photo-box {
+  max-height: 50vh;
 }
 
 .photo-form-wrapper {
@@ -119,22 +125,37 @@ const refresh = () => {
 
 .upload-button-wrapper {
   display: flex;
-  gap: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
   align-items: end;
 }
 
 .upload-button {
   cursor: pointer;
   display: flex;
-  gap: 16px;
-  width: 130px;
-  height: 44px;
-  padding: 8px 16px;
-  border: 2px solid black;
-  border-radius: 8px;
+  gap: clamp(0.5rem, 0.6vw, 1.25rem);
+  align-items: center;
+  padding: clamp(0.5rem, 0.4vw, 1rem) clamp(1rem, 0.8vw, 2rem);
+  border: clamp(1px, 0.15vw, 3px) solid black;
+  border-radius: clamp(0.5rem, 0.6vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 2rem);
 
   &.uploaded {
-    background-color: var(--secondary-l);
+    border: clamp(1px, 0.15vw, 3px) solid var(--secondary);
+    background-color: var(--white6);
   }
+}
+
+.image-input {
+  font-size: clamp(0.5rem, 0.75vw, 2rem);
+}
+
+.list-item svg {
+  width: clamp(1rem, 1.4vw, 2.5rem);
+  height: clamp(1rem, 1.4vw, 2.5rem);
+}
+
+.upload-button svg {
+  width: 1.2em;
+  height: 1.2em;
 }
 </style>

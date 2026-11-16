@@ -10,7 +10,7 @@ const user = usePage().props.auth.user;
       <User size="32" stroke-width="2.5" />
       <h1>Account</h1>
     </div>
-    <p>{{ user.username }}</p>
+    <p class="username-display">Hello, {{ user.username }}</p>
     <div class="button-wrapper">
       <Link class="account-button pill-button edit-account-button" href="/editUser">
         <UserPen />
@@ -26,11 +26,16 @@ const user = usePage().props.auth.user;
 <style lang="scss" scoped>
 .button-wrapper {
   display: flex;
-  gap: 16px;
+  gap: clamp(1rem, 1.1vw, 2.5rem);
+}
+
+.username-display {
+  margin-left: 4px;
+  font-size: clamp(1.25rem, 1.5vw, 3rem);
 }
 
 .account-button {
-  margin-top: 16px;
+  margin-top: clamp(1rem, 1.1vw, 2.5rem);
   border-color: black;
 }
 </style>

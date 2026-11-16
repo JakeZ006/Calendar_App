@@ -20,6 +20,7 @@ const { sidebarOpen } = defineProps(["sidebarOpen"]);
   display: grid;
   gap: 16px;
   align-items: center;
+  max-width: 18vw;
   height: 100vh;
   padding: 12px;
   transition: all cubic-bezier(0.16, 1, 0.3, 1) 400ms;
