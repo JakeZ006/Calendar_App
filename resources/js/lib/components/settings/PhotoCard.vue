@@ -112,7 +112,9 @@ const refresh = () => {
   justify-content: end;
 }
 
-
+.image {
+  margin-bottom: 1vh;
+}
 
 .photo-form-wrapper {
   display: flex;
