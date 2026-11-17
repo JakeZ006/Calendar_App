@@ -110,12 +110,9 @@ const refresh = () => {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  width: 100%;
 }
 
-.image {
-  max-height: 40cqb;
-}
+
 
 .photo-form-wrapper {
   display: flex;
