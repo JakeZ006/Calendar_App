@@ -54,6 +54,7 @@
     --radius-xl: 24px;
     --radius-2xl: 32px;
     --radius-pill: 999px;
+    --radius-sidebar: 2cqb;
     --shadow-card: 1px 1px 20px var(--grey1);
     --shadow-button: 2px 2px 5px var(--grey1);
 
@@ -146,25 +147,26 @@ ul {
 /* Shared settings card styles */
 .settings-title {
     display: flex;
-    gap: clamp(0.5rem, 0.6vw, 1.25rem);
+    gap: clamp(0.5rem, 0.75cqi, 1.25rem);
     align-items: center;
 }
 
 .settings-title h1 {
-    font-size: clamp(1.5rem, 2.2vw, 4rem);
+    font-size: clamp(1.25rem, 2.25cqi, 4rem);
     font-weight: 600;
 }
 
 .settings-title svg {
-    width: clamp(2rem, 2.2vw, 4rem);
-    height: clamp(2rem, 2.2vw, 4rem);
+    width: clamp(2rem, 2.75cqi, 4rem);
+    height: clamp(2rem, 2.75cqi, 4rem);
+    stroke-width: 2px;
 }
 
 .settings-card {
-    padding: clamp(1rem, 1.1vw, 2.5rem);
-    border-radius: clamp(1rem, 1.1vw, 2rem);
+    padding: clamp(1rem, 1.375cqi, 2.5rem);
+    border-radius: clamp(1rem, 1.375cqi, 2rem);
 
-    font-size: clamp(1rem, 1.5vw, 2rem);
+    font-size: clamp(1rem, 1.875cqi, 2rem);
 
     background-color: var(--white1);
     box-shadow: var(--shadow-card);
@@ -182,7 +184,7 @@ ul {
     min-height: 100vh;
     margin: auto;
 
-    background-color: var(--white2);
+    background-color: var(--white6);
 }
 
 .app-page-main {
@@ -207,16 +209,19 @@ ul {
 }
 
 /* Account forms */
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .account-form-card {
     container-type: inline-size;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    width: 100%;
-    max-width: 100rem;
-    height: 30%;
-    margin-inline: auto;
+    width: 65vw;
     padding: clamp(0.75rem, 2.2vw, 3rem);
     border-radius: clamp(0.75rem, 1.1vw, 2rem);
 
@@ -240,7 +245,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: clamp(0.75rem, 1.7vw, 2.5rem);
-    margin-top: 10%;
+    margin-top: 5vh;
 }
 
 .form-field {
@@ -253,7 +258,7 @@ ul {
     width: 60cqi;
     padding: clamp(0.125rem, 0.2vw, 0.5rem) clamp(0.5rem, 0.85vw, 2rem);
     border-radius: clamp(0.25rem, 0.4vw, 1rem);
-    font-size: clamp(0.875rem, 1.93cqi, 2.0625rem);
+    font-size: clamp(0.75rem, 1.5cqi, 2.0625rem);
 }
 
 .form-error {
@@ -270,18 +275,18 @@ ul {
 /* Pill buttons */
 .pill-button {
     display: flex;
-    gap: clamp(0.5rem, 0.6vw, 1.25rem);
+    gap: clamp(0.5rem, 0.75cqi, 1.25rem);
     align-items: center;
 
-    padding: clamp(0.5rem, 0.55vw, 0.8rem) clamp(1rem, 1.1vw, 2.5rem);
-    border: clamp(1px, 0.08vw, 2px) solid var(--text-dark);
-    border-radius: clamp(1rem, 2.2vw, 4rem);
+    padding: clamp(0.5rem, 0.6875cqi, 0.8rem) clamp(1rem, 1.375cqi, 2.5rem);
+    border: clamp(1px, 0.1cqi, 2px) solid var(--text-dark);
+    border-radius: clamp(1rem, 2.75cqi, 4rem);
 
-    font-size: clamp(1rem, 2vw, 3rem);
+    font-size: clamp(1rem, 2.5cqi, 3rem);
 }
 
 .pill-button p {
-    font-size: clamp(1.25rem, 1.2vw, 4rem);
+    font-size: clamp(1.25rem, 1.5cqi, 4rem);
 }
 
 .pill-button svg {

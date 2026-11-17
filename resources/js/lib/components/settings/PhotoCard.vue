@@ -34,16 +34,16 @@ const refresh = () => {
             <button @click="selectedImage = image.path">{{ image.name }}</button>
             <Form action="/deleteImage" method="delete" @success="refresh">
               <input v-show="false" name="id" :value="image.id" />
-              <button><Trash color="red" /></button>
+              <button class="delete-image-button"><Trash /></button>
             </Form>
           </li>
-          <li>(Works better with more images)</li>
+          <li class="works-better">(Works better with more images)</li>
         </ul>
       </div>
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img v-if="selectedImage" :src="selectedImage" class="image" />
+          <img class="image" v-if="selectedImage" :src="selectedImage" />
         </div>
 
         <Form
@@ -60,7 +60,6 @@ const refresh = () => {
                 <p>Upload</p>
               </label>
               <input class="image-input" id="image" accept="image/*" name="image" type="file" />
-              <br />
             </div>
             <button :class="['upload-button', 'submit-button', { uploaded: uploadedImage }]">
               <ImageUp />
@@ -79,22 +78,23 @@ const refresh = () => {
 
 .photo-settings-wrapper {
   display: flex;
+  margin-top: 2cqi;
 }
 
 .list-wrapper {
-  margin-right: clamp(1rem, 2.2vw, 4rem);
-  padding-right: clamp(1rem, 1.1vw, 2.5rem);
-  border-right: clamp(2px, 0.2vw, 4px) solid var(--primary);
+  margin-right: clamp(1rem, 2.75cqi, 4rem);
+  padding-right: clamp(1rem, 1.375cqi, 2.5rem);
+  border-right: clamp(2px, 0.25cqi, 4px) solid var(--primary);
 }
 
 .list-item {
   display: flex;
-  gap: clamp(1rem, 1.1vw, 2.5rem);
+  gap: clamp(1rem, 1.375cqi, 2.5rem);
   justify-content: space-between;
-  margin-bottom: clamp(0.5rem, 0.55vw, 1.25rem);
-  padding: clamp(0.25rem, 0.3vw, 0.625rem) clamp(0.5rem, 0.6vw, 1.25rem);
-  border-radius: clamp(0.5rem, 0.6vw, 1.25rem);
-  font-size: clamp(1.2rem, 1.8cqi, 3rem);
+  margin-bottom: clamp(0.5rem, 0.6875cqi, 1.25rem);
+  padding: 0 clamp(0.25rem, 0.7cqi, 1.25rem);
+  border-radius: clamp(0.5rem, 0.75cqi, 1.25rem);
+  font-size: clamp(1rem, 2.5cqi, 2rem);
   background-color: var(--white6);
 
   &:hover {
@@ -103,19 +103,18 @@ const refresh = () => {
 }
 
 .selected-photo {
-  outline: clamp(2px, 0.2vw, 5px) solid var(--primary);
+  outline: clamp(2px, 0.25cqi, 5px) solid var(--primary);
 }
 
 .upload-photo-box {
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 1.1vw, 2.5rem);
   justify-content: end;
   width: 100%;
 }
 
-.image{
-  max-height: 40vh;
+.image {
+  max-height: 40cqb;
 }
 
 .photo-form-wrapper {
@@ -125,33 +124,46 @@ const refresh = () => {
 
 .upload-button-wrapper {
   display: flex;
-  gap: clamp(0.5rem, 0.6vw, 1.25rem);
+  gap: clamp(0.5rem, 0.75cqi, 1.25rem);
   align-items: end;
+}
+
+.delete-image-button {
+  height: 100%;
+
+  svg {
+    stroke: var(--red);
+  }
+}
+
+.works-better {
+  font-size: clamp(0.875rem, 1.5cqi, 2rem);
 }
 
 .upload-button {
   cursor: pointer;
   display: flex;
-  gap: clamp(0.5rem, 0.6vw, 1.25rem);
+  gap: clamp(0.5rem, 0.75cqi, 1.25rem);
   align-items: center;
-  padding: clamp(0.5rem, 0.4vw, 1rem) clamp(1rem, 0.8vw, 2rem);
-  border: clamp(1px, 0.15vw, 3px) solid black;
-  border-radius: clamp(0.5rem, 0.6vw, 1.25rem);
-  font-size: clamp(1rem, 1.5vw, 2rem);
+  padding: 1cqi;
+  border: clamp(1px, 0.2cqi, 3px) solid black;
+  border-radius: clamp(0.5rem, 0.75cqi, 1.25rem);
+  font-size: clamp(0.75rem, 2cqi, 2rem);
 
   &.uploaded {
-    border: clamp(1px, 0.15vw, 3px) solid var(--secondary);
+    border: clamp(1px, 0.2cqi, 3px) solid var(--secondary);
     background-color: var(--white6);
   }
 }
 
 .image-input {
-  font-size: clamp(0.5rem, 0.75vw, 2rem);
+  width: fit-content;
+  font-size: clamp(0.65rem, 1.5cqi, 2rem);
 }
 
 .list-item svg {
-  width: clamp(1rem, 1.4vw, 2.5rem);
-  height: clamp(1rem, 1.4vw, 2.5rem);
+  width: clamp(1rem, 1.75cqi, 2.5rem);
+  height: clamp(1rem, 1.75cqi, 2.5rem);
 }
 
 .upload-button svg {

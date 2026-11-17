@@ -10,22 +10,24 @@ const emit = defineEmits(["edit-note", "delete"]);
 <template>
   <div :class="['card', { important: note.important }]">
     <header class="card-header">
-      <h1 class="title">{{ note.title }}</h1>
       <div class="card-button-wrapper">
         <button class="card-button edit-button" @click="$emit('edit-note', note.id)">
-          <SquarePen color="var(--text-light)" />
+          <SquarePen />
           <p>Edit</p>
         </button>
         <Form :action="`/deleteNote/${note.id}`" method="delete" @success="$emit('delete')">
           <input type="hidden" name="id" :value="note.id" />
           <button class="card-button delete-button">
-            <Trash color="var(--black1)" />
+            <Trash />
             <p>Delete</p>
           </button>
         </Form>
       </div>
     </header>
-    <p class="content">{{ note.content }}</p>
+    <div class="content-wrapper">
+      <h1 class="title">{{ note.title }}</h1>
+      <p class="content">{{ note.content }}</p>
+    </div>
     <div class="tag-wrapper">
       <div :class="['note-tag', 'type-tag', note.type.toLowerCase()]">{{ note.type }}</div>
       <div class="note-tag important-tag" v-if="note.important">important</div>
@@ -39,10 +41,10 @@ const emit = defineEmits(["edit-note", "delete"]);
   container-type: size;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.5rem, 1.1vw, 2.5rem);
-  padding: clamp(1rem, 1.1vw, 2.5rem);
+  gap: 2cqb;
+  padding: 2cqb;
   border-radius: clamp(0.75rem, 0.85vw, 2rem);
-  font-size: clamp(0.875rem, 1.1vw, 1.5rem);
+  font-size: clamp(0.875rem, 1vw, 2rem);
   background-color: var(--white1);
   box-shadow: -3px 2px 5px 1px var(--white6);
 }
@@ -53,12 +55,14 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .title {
-  font-size: clamp(1.25rem, 7cqi, 3rem);
+  font-size: clamp(1rem, 7cqi, 3rem);
+  text-decoration: underline;
 }
 
 .card-button-wrapper {
   display: flex;
-  gap: clamp(0.5rem, 0.6vw, 1.25rem);
+  justify-content: space-between;
+  width: 100%;
 }
 
 .card-button {
@@ -67,19 +71,21 @@ const emit = defineEmits(["edit-note", "delete"]);
   gap: clamp(0.25rem, 0.4vw, 0.75rem);
   align-items: center;
   justify-content: center;
-  min-height: clamp(2.25rem, 2.5vw, 4.5rem);
-  padding: clamp(0.25rem, 0.3vw, 0.75rem) clamp(0.5rem, 0.6vw, 1.5rem);
+  height: fit-content;
+  padding: clamp(0.2rem, 0.2vw, 0.4rem) clamp(0.5rem, 0.6vw, 1.5rem);
   border-radius: 99px;
-}
+  font-size: clamp(1rem, 4cqi, 3rem);
 
-.card-button svg {
-  flex-shrink: 0;
-  width: 1em;
-  height: 1em;
+  svg {
+    width: 1em;
+    height: 1em;
+    stroke: var(--text-dark);
+  }
 }
 
 .edit-button {
-  background-color: var(--secondary);
+  border: clamp(2px, 0.2vw, 5px) solid var(--mix);
+  background-color: var(--white6);
 
   &:hover {
     background-color: var(--secondary-l);
@@ -87,10 +93,6 @@ const emit = defineEmits(["edit-note", "delete"]);
 
   &:active {
     background-color: var(--mix);
-  }
-
-  p {
-    color: var(--text-light);
   }
 }
 
@@ -101,10 +103,15 @@ const emit = defineEmits(["edit-note", "delete"]);
   &:hover {
     background-color: var(--red-l1);
   }
+}
 
-  p {
-    color: var(--black1);
-  }
+.content-wrapper {
+  margin-left: 3cqi;
+}
+
+.content {
+  font-size: clamp(0.5rem, 5cqi, 3rem);
+  font-weight: 400;
 }
 
 .tag-wrapper {

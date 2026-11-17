@@ -17,7 +17,7 @@ const user = usePage().props.auth.user;
         <p>Edit</p>
       </Link>
       <Link class="account-button pill-button delete-account-button" href="/deleteUser">
-        <Trash color="var(--red)" />
+        <Trash />
         <p>Delete</p>
       </Link>
     </div>
@@ -26,16 +26,16 @@ const user = usePage().props.auth.user;
 <style lang="scss" scoped>
 .button-wrapper {
   display: flex;
-  gap: clamp(1rem, 1.1vw, 2.5rem);
+  gap: clamp(1rem, 1.375cqi, 2.5rem);
 }
 
 .username-display {
-  margin-left: 4px;
-  font-size: clamp(1.25rem, 1.5vw, 3rem);
+  margin-top: 0.5rem;
+  margin-left: clamp(0.125rem, 0.35cqi, 0.75rem);
+  font-size: clamp(0.875rem, 1.375cqi, 3rem);
 }
 
 .account-button {
-  margin-top: clamp(1rem, 1.1vw, 2.5rem);
-  border-color: black;
+  margin-top: clamp(1rem, 1.375cqi, 2.5rem);
 }
 </style>

@@ -11,5 +11,6 @@ export default {
       "hue-degree-notation": "number",
       "selector-no-unmatchable": null,
       "media-feature-name-no-unknown": null,
+      "no-descending-specificity": null,
   },
 };

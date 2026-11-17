@@ -20,7 +20,7 @@ const errors = page.props.errors;
           <label for="old-password">Current Password</label>
           <input id="old-password" name="oldPassword" required type="password" />
         </div>
-        <div class="input-box form-field">
+        <div class="input-box form-field new-user-box">
           <label for="new-sername">New Username</label>
           <input id="new-username" name="newUsername" required />
         </div>
@@ -39,13 +39,14 @@ const errors = page.props.errors;
   background-color: var(--white5);
 }
 
-#new-username {
-  margin-top: clamp(0.75rem, 2.2vw, 4rem);
+.new-user-box {
+  margin-top: 5vh;
 }
 
 .update-button {
   width: 100%;
   margin: auto;
+  margin-top: 3vh;
   padding: clamp(0.375rem, 0.55vw, 1.25rem) clamp(0.75rem, 1.1vw, 2.5rem);
   border-radius: clamp(0.375rem, 0.6vw, 1.25rem);
   font-size: clamp(0.875rem, 1.5vw, 2.0625rem);

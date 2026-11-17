@@ -18,7 +18,7 @@ import PhotoBanner from "./PhotoBanner.vue";
   height: 35cqh;
   padding: 16px;
   padding-top: 8px;
-  border-radius: 16px;
+  border-radius: var(--radius-sidebar);
   background-color: var(--white2);
 }
 </style>

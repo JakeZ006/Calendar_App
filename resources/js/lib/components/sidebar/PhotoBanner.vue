@@ -34,7 +34,7 @@ onMounted(() => {
       </div>
       <div :class="['overlay', { empty: images.length === 0 }]">
         <h1>Upload images</h1>
-        <ImageUp color="var(--text-light)" size="32" />
+        <ImageUp c size="32" />
       </div>
     </Link>
   </div>
@@ -71,6 +71,10 @@ onMounted(() => {
   justify-content: center;
   opacity: 0;
   background-color: hsl(0 0% 0% / 50%);
+
+  svg {
+    stroke: var(--text-light);
+  }
 
   h1 {
     font-size: clamp(1.25rem, 8cqi, 3rem);

@@ -69,12 +69,12 @@ const selectedTheme = computed({
 <style lang="scss" scoped>
 .form-wrapper {
   display: flex;
-  gap: clamp(1rem, 1.1vw, 2.5rem);
+  gap: clamp(1rem, 1.375cqi, 2.5rem);
 }
 
 .theme-radio-button {
   cursor: pointer;
-  margin-top: clamp(1rem, 1.1vw, 2.5rem);
+  margin-top: clamp(1rem, 1.375cqi, 2.5rem);
 }
 
 .selected-radio {

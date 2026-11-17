@@ -6,7 +6,7 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 </script>
 
 <template>
-  <div class="body app-page">
+  <div class="settings-body app-page">
     <header>
       <SettingsNav />
     </header>
@@ -21,13 +21,14 @@ import PhotoCard from "@/lib/components/settings/PhotoCard.vue";
 </template>
 
 <style lang="scss" scoped>
-.body {
-  width: min(80vw, 3400px);
+.settings-body {
+  container-type: size;
+  max-width: 100vh;
 }
 
 .main {
-  gap: clamp(1.5rem, 2.2vw, 4rem);
-  padding: clamp(2rem, 4.4vw, 8rem) clamp(3rem, 10.4vw, 18rem);
+  gap: clamp(1.5rem, 2.75cqi, 4rem);
+  padding: clamp(2rem, 5.5cqi, 8rem) clamp(3rem, 13cqi, 18rem);
 }
 
 .settings-top {

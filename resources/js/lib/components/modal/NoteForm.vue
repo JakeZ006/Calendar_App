@@ -39,8 +39,8 @@ if (mode === "edit") {
   <div class="form-body">
     <div class="form-box">
       <div class="form-header">
-        <div class="notebook-icon icon-circle">
-          <NotebookPen color="var(--text-light)" size="4cqi" />
+        <div class="notebook-icon">
+          <NotebookPen size="4cqi" />
         </div>
         <h1 class="form-header-title">
           {{ mode === "edit" ? "Edit note for:" : "Create note for:" }}
@@ -138,7 +138,7 @@ if (mode === "edit") {
           </div>
 
           <button class="submit-button button-primary" type="submit">
-            <Send color="var(--text-light)" size="6cqb" />
+            <Send size="6cqb" />
             <p>Submit</p>
           </button>
         </div>
@@ -206,6 +206,16 @@ if (mode === "edit") {
   label {
     font-size: clamp(0.9375rem, 1.25vw, 1.6875rem);
     font-weight: 700;
+  }
+}
+
+.notebook-icon {
+  padding: 1cqi;
+  border-radius: 50%;
+  background-color: var(--mix);
+
+  svg {
+    stroke: var(--text-light);
   }
 }
 
@@ -304,6 +314,10 @@ if (mode === "edit") {
   padding: clamp(0.5rem, 0.55vw, 1.25rem) clamp(1rem, 1.1vw, 2.5rem);
   border-radius: clamp(0.75rem, 0.85vw, 2rem);
   box-shadow: var(--shadow-button);
+
+  svg {
+    stroke: var(--text-light);
+  }
 
   p {
     font-size: clamp(1rem, 5cqb, 2.25rem);

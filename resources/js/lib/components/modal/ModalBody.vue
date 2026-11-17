@@ -51,8 +51,11 @@ const refresh = () => {
     <OnClickOutside @trigger="modal.close()">
       <div class="modal-body">
         <header class="modal-header">
-          <button :class="['back-button', { visible: formOpen }]" @click="formOpen = false">
-            <ArrowLeft color="var(--text-light)" size="52" stroke-width="1.5" />
+          <button
+            :class="['back-button', 'header-button', { visible: formOpen }]"
+            @click="formOpen = false"
+          >
+            <ArrowLeft size="52" stroke-width="1.5" />
           </button>
           <h1 class="date-display">
             {{ date.dayName }} {{ date.day }}<sup>{{ date.daySuffix }}</sup> {{ date.monthName }}
@@ -60,8 +63,8 @@ const refresh = () => {
           </h1>
           <div class="close-form">
             <form method="dialog">
-              <button class="close-button">
-                <X color="var(--text-light)" size="52" stroke-width="1.5" />
+              <button class="close-button header-button">
+                <X size="52" stroke-width="1.5" />
               </button>
             </form>
           </div>
@@ -82,7 +85,7 @@ const refresh = () => {
             />
 
             <button class="add-note-card" @click="addNote">
-              <CirclePlus color="var(--mix)" size="128" />
+              <CirclePlus />
               <h1 class="add-note-title">Add note</h1>
             </button>
           </div>
@@ -123,7 +126,7 @@ const refresh = () => {
   );
 
   .date-display {
-    font-size: clamp(1.75rem, 2.5vw, 3.75rem);
+    font-size: clamp(1.75rem, 2.5vw, 5rem);
     color: var(--text-light);
 
     sup {
@@ -133,9 +136,14 @@ const refresh = () => {
 }
 
 .modal-header svg {
-  flex-shrink: 0;
   width: clamp(2rem, 3.6vw, 5.5rem);
   height: clamp(2rem, 3.6vw, 5.5rem);
+}
+
+.header-button {
+  svg {
+    stroke: var(--text-light);
+  }
 }
 
 .back-button {
@@ -178,26 +186,29 @@ const refresh = () => {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 8px;
+  padding: 32px;
   border: clamp(3px, 0.4vw, 8px) dashed var(--white6);
   border-radius: clamp(0.75rem, 0.85vw, 2rem);
   background-color: var(--white3);
+
+  &:hover {
+    .add-note-title {
+      color: var(--mix);
+      text-decoration: underline;
+      text-decoration-thickness: clamp(2px, 0.2vw, 5px);
+      text-underline-offset: clamp(0.25rem, 0.3vw, 0.5rem);
+    }
+  }
 }
 
 .add-note-card svg {
-  width: clamp(4rem, 8.9vw, 14rem);
-  height: clamp(4rem, 8.9vw, 14rem);
+  width: 15cqb;
+  height: 15cqb;
+  stroke: var(--mix);
 }
 
 .add-note-title {
   font-size: clamp(1.5rem, 2.2vw, 3rem);
   font-weight: 600;
-
-  &:hover {
-    color: var(--mix);
-    text-decoration: underline;
-    text-decoration-thickness: clamp(2px, 0.2vw, 5px);
-    text-underline-offset: clamp(0.25rem, 0.3vw, 0.5rem);
-  }
 }
 </style>

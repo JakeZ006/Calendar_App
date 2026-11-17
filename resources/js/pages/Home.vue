@@ -10,7 +10,7 @@ const sidebarOpen = ref(true);
 
 <template>
   <Link class="settings-button icon-circle" href="/settings">
-    <Settings color="var(--text-light)" size="2vw"/>
+    <Settings size="3vh" />
   </Link>
 
   <main :class="['layout', { 'sidebar-closed': !sidebarOpen }]">
@@ -34,7 +34,10 @@ const sidebarOpen = ref(true);
   position: fixed;
   top: 16px;
   right: 16px;
-  padding: 0.25vw;
+
+  svg {
+    stroke: var(--text-light);
+  }
 
   &:hover {
     background-color: var(--mix);

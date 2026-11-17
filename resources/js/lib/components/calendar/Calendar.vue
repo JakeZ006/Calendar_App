@@ -210,7 +210,7 @@ onMounted(() => {
   container-type: inline-size;
   justify-self: center;
   width: calc(100vw - min(18vw, 700px) - min(256px, 10vw));
-  padding: clamp(32px, 2vw, 48px);
+  padding: clamp(32px, 2vw, 64px);
   padding-bottom: 0;
   border-radius: 32px;
   background-color: var(--white1);
@@ -227,7 +227,6 @@ onMounted(() => {
   display: flex;
   gap: 24px;
   align-items: center;
-  max-height: 55vh;
   padding: clamp(16px, 1vw, 24px);
   border-radius: 16px;
   background-color: var(--white2);
@@ -239,8 +238,6 @@ onMounted(() => {
   grid-auto-flow: column;
   grid-template-rows: repeat(7, clamp(48px, 6vh, 256px));
   gap: 4px;
-  width: min(70%, 800px);
-  min-width: clamp(24px, 100%, 48px);
   margin-bottom: 24px;
   border-top: 1px solid var(--primary);
 }
@@ -253,20 +250,20 @@ onMounted(() => {
   text-align: center;
 
   p {
-    font-size: clamp(1rem, 1.5cqi, 2rem);
+    font-size: clamp(1rem, 1.5cqb, 2rem);
     font-weight: 700;
   }
 }
 
 .calendar-grid {
   user-select: none;
-  scroll-padding-left: calc(clamp(42px, 3vw, 64px) * v-bind(cellZoom) + 8px);
+  scroll-padding-left: calc(clamp(38px, 4cqb, 92px) * v-bind(cellZoom) + clamp(3px, 0.25cqb, 8px));
   scroll-snap-type: x mandatory;
   overflow: auto;
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, clamp(48px, 6vh, 256px));
-  gap: clamp(4px, 0.2vw, 8px);
+  gap: clamp(3px, 0.4cqb, 8px);
   border-radius: 8px;
 
   &::-webkit-scrollbar {
@@ -303,7 +300,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: calc(clamp(38px, 2.5vw, 84px) * v-bind(cellZoom));
+  width: calc(clamp(38px, 4cqb, 92px) * v-bind(cellZoom));
   padding: 4px;
   border-radius: 12%;
 
@@ -404,7 +401,9 @@ onMounted(() => {
 .calendar-controls {
   display: flex;
   justify-content: space-between;
-  padding: clamp(16px, 1vw, 24px) 0;
+  height: 6cqh;
+  margin-bottom: 1.5cqb;
+  padding: 1.5cqb 0;
 }
 
 .left-controls-wrapper {
@@ -416,7 +415,8 @@ onMounted(() => {
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 8px 16px;
+  height: 4.5cqb;
+  padding: 16px;
   border-radius: 12px;
   font-size: clamp(01rem, 2cqi, 2rem);
   box-shadow: var(--shadow-button);
@@ -453,14 +453,15 @@ onMounted(() => {
   overflow: hidden;
   display: flex;
   align-items: center;
+  height: fit-content;
   border: solid 3px var(--white6);
   border-radius: 999px;
   box-shadow: 0 2px 10px var(--white5);
 }
 
 .zoom-button {
-  height: 100%;
-  padding: 6px 12px;
+  height: 4cqb;
+  padding: clamp(2px, 0.25cqb, 6px) clamp(8px, 1cqb, 18px);
   background-color: var(--white5);
 
   &:hover {
@@ -472,8 +473,8 @@ onMounted(() => {
   }
 
   svg {
-    width: clamp(24px, 3cqi, 50px);
-    height: clamp(24px, 3cqi, 50px);
+    width: 100%;
+    height: 100%;
   }
 }
 

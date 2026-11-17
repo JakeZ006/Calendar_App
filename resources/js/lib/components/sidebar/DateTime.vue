@@ -37,7 +37,7 @@ onMounted(() => {
   height: fit-content;
   padding: 0 32px;
   padding-bottom: 16px;
-  border-radius: 32px;
+  border-radius: var(--radius-sidebar);
   background-image: radial-gradient(circle at -100% -150%, var(--secondary), var(--primary));
 }
 

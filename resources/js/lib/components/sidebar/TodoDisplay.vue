@@ -63,10 +63,9 @@ const important = ref(false);
 <style lang="scss" scoped>
 .todo-display-wrapper {
   container-type: size;
-  height: 37cqh;
-  padding: 8px;
-  padding-bottom: 4px;
-  border-radius: 24px;
+  height: 40cqh;
+  padding: 3cqi;
+  border-radius: var(--radius-sidebar);
   background-color: var(--white2);
 }
 
@@ -74,16 +73,8 @@ const important = ref(false);
   overflow: hidden;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
-  border-radius: 99px;
-
-  &::after {
-    position: absolute;
-    transform: translateY(28px);
-    width: 96cqi;
-    margin-left: 2cqi;
-    border: 1px solid var(--white6);
-  }
+  margin-bottom: 2cqb;
+  border-radius: 5cqi;
 }
 
 .date-button-wrapper {
@@ -93,9 +84,8 @@ const important = ref(false);
 }
 
 .todo-nav-button {
-  height: max(40px, 8cqh);
-  padding: 8px 0;
-  font-size: clamp(0.9375rem, 4cqi, 1.6875rem);
+  height: max(32px, 9cqh);
+  font-size: clamp(0.5rem, 5cqi, 2rem);
   font-weight: 700;
   background-color: var(--white5);
 
@@ -115,8 +105,8 @@ const important = ref(false);
   align-items: center;
   justify-content: center;
   min-width: 10cqi;
-  height: max(40px, 8cqh);
-  padding: 0 12px 0 8px;
+  height: max(32px, 9cqh);
+  padding: 0 16px 0 12px;
   border-left: 3px solid var(--mix);
 }
 
