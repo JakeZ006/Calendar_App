@@ -15,7 +15,8 @@ class ImageController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        $path = $request->file('image')->store('images', 's3');
+        $path = Storage::disk('s3')->put('images', $request->file('image'));
+
 
         Image::create([
             'path' => $path,

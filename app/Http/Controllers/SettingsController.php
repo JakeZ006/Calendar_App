@@ -12,8 +12,10 @@ class SettingsController extends Controller
     public function index(Image $image): Response
     {
 
+        dd(Storage::disk('storage'));
+
         return Inertia::render('Settings', [
-            'images' => $image::where('user_id', Auth::id())->get(),
+            'images' => Storage::disk('s3')
         ]);
     }
 }
