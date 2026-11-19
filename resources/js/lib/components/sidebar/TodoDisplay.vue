@@ -62,8 +62,8 @@ const important = ref(false);
 
 <style lang="scss" scoped>
 .todo-display-wrapper {
-  height: 100%;
   container-type: size;
+  height: 100%;
   padding: 3cqi;
   border-radius: var(--radius-sidebar);
   background-color: var(--white2);

@@ -13,9 +13,9 @@ import PhotoBanner from "./PhotoBanner.vue";
 <style lang="scss" scoped>
 .other-wrapper {
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   padding: 16px;
   padding-top: 8px;
   border-radius: var(--radius-sidebar);

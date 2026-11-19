@@ -14,9 +14,6 @@ const refresh = () => {
     only: ["images"],
   });
 };
-
-
-
 </script>
 <template>
   <div class="photo-settings settings-card">
