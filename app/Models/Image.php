@@ -6,4 +6,6 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
 #[Fillable(['path', 'name', 'user_id'])]
-class Image extends Model {}
+class Image extends Model {
+
+}

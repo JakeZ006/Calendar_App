@@ -14,6 +14,9 @@ const refresh = () => {
     only: ["images"],
   });
 };
+
+
+
 </script>
 <template>
   <div class="photo-settings settings-card">
@@ -43,7 +46,7 @@ const refresh = () => {
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img class="image" v-if="selectedImage" :src="selectedImage" />
+          <img class="image" v-if="selectedImage" :src="`public/${selectedImage}`" />
         </div>
 
         <Form

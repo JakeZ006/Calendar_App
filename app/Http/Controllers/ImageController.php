@@ -15,10 +15,10 @@ class ImageController extends Controller
             'image' => ['required', 'image'],
         ]);
 
-        $path = $request->image->store('images', 'public');
+        $path = $request->file('image')->store('images', 's3');
 
         Image::create([
-            'path' => 'https://fls-a330b4e4-6408-4171-ba4a-11b9394b4178.laravel.cloud/'.$path,
+            'path' => $path,
             'user_id' => Auth::id(),
             'name' => $request->image->getClientOriginalName(),
         ]);

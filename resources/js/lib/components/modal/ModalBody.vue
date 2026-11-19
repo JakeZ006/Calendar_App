@@ -174,7 +174,7 @@ const refresh = () => {
 
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(22rem, 21.5vw, 44rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(20rem, 21.5vw, 25rem), 1fr));
   gap: 2%;
   padding: clamp(1rem, 1.1vw, 2.5rem);
 }

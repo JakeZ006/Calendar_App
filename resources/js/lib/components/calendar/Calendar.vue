@@ -314,15 +314,14 @@ onMounted(() => {
   justify-content: space-between;
 }
 
-.day,
-.month {
+.day{
   font-size: clamp(0.6875rem, 30cqi, 1.5rem);
   font-weight: 500;
 }
 
 .month {
-  margin-right: 4px;
   font-size: clamp(0.6875rem, 30cqi, 1.5rem);
+  margin-right: 4px;
   font-weight: 700;
 }
 

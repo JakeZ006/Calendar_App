@@ -6,7 +6,6 @@
         <link rel="icon" href="{{ asset('favicon.svg') }}">
 
         <script>
-        /*
             (() => {
                 try {
                     const stored = localStorage.getItem("theme");
@@ -19,7 +18,7 @@
                 } catch {
                     // Storage unavailable; keep the light theme.
                 }
-            })();*/
+            })();
         </script>
 
         @vite(['resources/css/app.css', 'resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])

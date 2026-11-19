@@ -2,10 +2,9 @@
 import { usePage, Link, Form } from "@inertiajs/vue3";
 import { computed } from "vue";
 
-
 const page = usePage();
 let url = page.url;
-const errors = computed(() =>page.props.errors);
+const errors = computed(() => page.props.errors);
 
 if (url === "/") {
   url = "/register";
@@ -31,12 +30,12 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
       <div class="input-box form-field">
         <label for="username">Username</label>
         <input id="username" name="username" required />
-        <p class="form-error">{{ errors.username}}</p>
+        <p class="form-error">{{ errors.username }}</p>
       </div>
       <div class="input-box form-field">
         <label for="password">Password</label>
         <input id="password" name="password" required type="password" />
-        <p class="form-error" >{{ errors.password }}</p>
+        <p class="form-error">{{ errors.password }}</p>
       </div>
       <button class="login-button button-primary">
         {{ url === "/register" ? "Register" : "Log in" }}

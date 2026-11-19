@@ -18,7 +18,8 @@ const { sidebarOpen } = defineProps(["sidebarOpen"]);
 .sidebar-wrapper {
   container-type: inline-size;
   display: grid;
-  gap: 16px;
+  grid-template-rows: auto 1.25fr 1fr;
+  gap: 3vh;
   align-items: center;
   max-width: 18vw;
   height: 100vh;
