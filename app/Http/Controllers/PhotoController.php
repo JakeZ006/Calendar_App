@@ -16,7 +16,12 @@ class PhotoController extends Controller
             'photo' => ['required', 'mimes:avif,png,jpeg,jpg,webp', File::image()->max(3 * 1024)],
         ]);
 
-        $path = $request->image('photo')->optimize()->store('photos');
+        $path = $request->image('photo')->store('photos');
+
+        if(config('filesystems.default') === 's3'){
+            $url = Storage::disk('s3')->url($path);
+            dd($url);
+        }
 
         Photo::create([
             'path' => $path,
