@@ -18,7 +18,7 @@ class PhotoController extends Controller
 
         $path = $request->image('photo')->optimize()->storePublicly('photos');
 
-        dd($path)
+        dd($path);
 
         Photo::create([
             'path' => $path,
