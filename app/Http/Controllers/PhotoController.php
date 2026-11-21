@@ -18,8 +18,12 @@ class PhotoController extends Controller
 
         $path = $request->image('photo')->store('photos');
 
+        dd(Storage::disk('s3')->url($path));
+
         if(config('filesystems.default') === 's3'){
             $url = Storage::disk('s3')->url($path);
+        }else{
+            $url = $path;
         }
 
         Photo::create([
