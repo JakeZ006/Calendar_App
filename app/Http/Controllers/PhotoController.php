@@ -16,9 +16,9 @@ class PhotoController extends Controller
             'photo' => ['required', 'mimes:avif,png,jpeg,jpg,webp', File::image()->max(3 * 1024)],
         ]);
 
-        dd(config('filesystems.default'));
-
         $path = $request->image('photo')->optimize()->storePublicly('photos');
+
+        dd($path)
 
         Photo::create([
             'path' => $path,
