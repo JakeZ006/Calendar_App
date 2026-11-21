@@ -16,6 +16,7 @@ const refresh = () => {
   router.reload({
     only: ["photos"],
   });
+  console.log(photos)
 };
 </script>
 <template>
