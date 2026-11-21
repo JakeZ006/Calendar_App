@@ -49,7 +49,7 @@ if (mode === "edit") {
       </div>
       <Form
         class="form"
-        reset-on-success
+        resetOnSuccess
         :action="formAttrs.action"
         :method="formAttrs.method"
         @success="$emit('success')"

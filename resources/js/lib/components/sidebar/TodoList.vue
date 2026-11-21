@@ -61,7 +61,7 @@ const refresh = () => {
                 method="delete"
                 @success="refresh"
               >
-                <input v-show="false" name="id" :value="note.id" />
+                <input type="hidden" name="id" :value="note.id" />
                 <button class="delete-button">
                   <Trash size="min(7cqi, 48px)" />
                 </button>

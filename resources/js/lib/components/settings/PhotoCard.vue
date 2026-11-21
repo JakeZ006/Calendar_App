@@ -1,17 +1,20 @@
 <script setup>
 import { ImageUp, Trash, Image, Upload } from "@lucide/vue";
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { usePage, Form, router } from "@inertiajs/vue3";
 
 const page = usePage();
-const images = computed(() => page.props.images ?? []);
-const selectedImage = ref("");
-const uploadedImage = ref(false);
+const photos = computed(() => page.props.photos ?? []);
+const selectedPhoto = ref("");
+const uploadedPhoto = ref(false);
+
+const errors = computed(() => page.props.errors ?? []);
 
 const refresh = () => {
-  selectedImage.value = "";
+  selectedPhoto.value = "";
+  uploadedPhoto.value = false
   router.reload({
-    only: ["images"],
+    only: ["photos"],
   });
 };
 </script>
@@ -27,51 +30,59 @@ const refresh = () => {
         <ul>
           <li
             class="list-item"
-            v-for="image in images"
-            :key="image.id"
-            :class="{ 'selected-photo': selectedImage === image.path }"
+            v-for="photo in photos"
+            :key="photo.id"
+            :class="{ 'selected-photo': selectedPhoto === photo.path }"
           >
-            <button @click="selectedImage = image.path">{{ image.name }}</button>
-            <Form action="/deleteImage" method="delete" @success="refresh">
-              <input v-show="false" name="id" :value="image.id" />
-              <button class="delete-image-button"><Trash /></button>
+            <button @click="selectedPhoto = photo.path">{{ photo.name }}</button>
+            <Form :action="`/deletePhoto/${photo.id}`" method="delete" @success="refresh">
+              <input type="hidden" name="id" :value="photo.id" />
+              <button class="delete-photo-button"><Trash /></button>
             </Form>
           </li>
-          <li class="works-better">(Works better with more images)</li>
+          <li class="works-better">(Works better with more photos)</li>
         </ul>
       </div>
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img class="image" v-if="selectedImage" :src="`public/${selectedImage}`" />
+          <img class="photo" v-if="selectedPhoto" :src="`storage/${selectedPhoto}`" />
         </div>
 
         <Form
-          action="/uploadImage"
+          action="/uploadPhoto"
           enctype="multipart/form-data"
           method="post"
           @success="refresh"
-          @change="uploadedImage = true"
+          @change="uploadedPhoto = true"
+          resetOnSuccess
         >
           <div class="photo-form-wrapper">
             <div class="upload-button-wrapper">
-              <label class="upload-button" for="image">
+              <label class="upload-button" for="photo">
                 <Upload />
                 <p>Upload</p>
               </label>
-              <input class="image-input" id="image" accept="image/*" name="image" type="file" />
+              <input class="photo-input" id="photo" accept="photo/*" name="photo" type="file" />
             </div>
-            <button :class="['upload-button', 'submit-button', { uploaded: uploadedImage }]">
+            <button :class="['upload-button', 'submit-button', { uploaded: uploadedPhoto }]">
               <ImageUp />
               <p>Submit</p>
             </button>
           </div>
         </Form>
+        <p class="upload-errors">{{ errors.photo }}</p>
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
+.upload-errors {
+  margin-top: 1vh;
+  font-size: clamp(0.875rem, 1.5cqi, 2rem);
+  color: var(--red);
+}
+
 .photo-settings {
   container-type: inline-size;
 }
@@ -112,8 +123,9 @@ const refresh = () => {
   justify-content: end;
 }
 
-.image {
+.photo {
   margin-bottom: 1vh;
+  max-height: 45vh;
 }
 
 .photo-form-wrapper {
@@ -127,7 +139,7 @@ const refresh = () => {
   align-items: end;
 }
 
-.delete-image-button {
+.delete-photo-button {
   height: 100%;
 
   svg {
@@ -155,7 +167,7 @@ const refresh = () => {
   }
 }
 
-.image-input {
+.photo-input {
   width: fit-content;
   font-size: clamp(0.65rem, 1.5cqi, 2rem);
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
-use App\Models\Image;
 use App\Models\Note;
+use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -99,7 +99,7 @@ class UserController extends Controller
         }
 
         Note::where('user_id', $user->id)->delete();
-        Image::where('user_id', $user->id)->delete();
+        Photo::where('user_id', $user->id)->delete();
 
         Auth::logout();
 

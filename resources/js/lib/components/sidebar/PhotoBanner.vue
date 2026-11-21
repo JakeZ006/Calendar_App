@@ -3,14 +3,14 @@ import { usePage, Link } from "@inertiajs/vue3";
 import { ImageUp } from "@lucide/vue";
 import { computed, onMounted, ref } from "vue";
 
-const images = ref([]);
-const firstImage = ref(null);
+const page = usePage()
+const photos = computed(() => page.props.photos ?? []);
+const firstPhoto = ref();
 
-const scrollspeed = computed(() => images.value.length * 10 ?? 15);
+const scrollspeed = computed(() => photos.value.length * 10);
 
 onMounted(() => {
-  images.value = usePage().props.images ?? [];
-  firstImage.value = images.value[0]?.path ?? null;
+  firstPhoto.value = photos.value.length === 1 ? photos.value[0].path : null
 });
 </script>
 
@@ -19,21 +19,21 @@ onMounted(() => {
     <Link href="/settings">
       <div
         class="banner-scroll-track"
-        v-if="images.length > 1"
+        v-if="photos.length > 1"
         :style="`animation-duration: ${scrollspeed}s`"
       >
-        <div class="image-wrapper" v-for="image in images" :key="`${image.id}-1`">
-          <img class="image" :src="image.path" />
+        <div class="photo" v-for="photo in photos" :key="`${photo.id}-1`">
+          <img class="photo" :src="`storage/${photo.path}`" />
         </div>
-        <div class="image-wrapper" v-for="image in images" :key="`${image.id}-2`">
-          <img class="image" :src="image.path" />
+        <div class="photo-wrapper" v-for="photo in photos" :key="`${photo.id}-2`">
+          <img class="photo" :src="`storage/${photo.path}`" />
         </div>
       </div>
       <div v-else>
-        <img class="image" v-if="firstImage" :src="firstImage" />
+        <img class="photo-singular" v-if="firstPhoto" :src="`storage/${firstPhoto}`" />
       </div>
-      <div :class="['overlay', { empty: images.length === 0 }]">
-        <h1>Upload images</h1>
+      <div :class="['overlay', { empty: photos.length === 0 }]">
+        <h1>Upload photos</h1>
         <ImageUp c size="32" />
       </div>
     </Link>
@@ -56,9 +56,14 @@ onMounted(() => {
   animation: banner-scroll linear infinite;
 }
 
-.image {
+.photo {
   max-width: none;
   height: 100%;
+}
+
+.photo-singular{
+  width: 100cqi;
+  height: 100cqh;
 }
 
 .overlay {

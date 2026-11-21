@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/updateNote/{note}', [NoteController::class, 'update'])->name('note.update');
     Route::delete('/deleteNote/{note}', [NoteController::class, 'destroy'])->name('note.destroy');
 
-    Route::post('/uploadImage', [ImageController::class, 'store'])->name('image.store');
-    Route::delete('/deleteImage', [ImageController::class, 'destroy'])->name('image.destroy');
+    Route::post('/uploadPhoto', [PhotoController::class, 'store'])->name('photo.store');
+    Route::delete('/deletePhoto/{photo}', [PhotoController::class, 'destroy'])->name('photo.destroy');
 
 });

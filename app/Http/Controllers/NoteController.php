@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
 use App\Models\Note;
 use App\Models\Quote;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -20,7 +20,7 @@ class NoteController extends Controller
                 ->orderBy('for_date')
                 ->get()
                 ->groupBy('for_date'),
-            'images' => Image::where('user_id', Auth::id())->get(),
+            'photos' => User::find(Auth::id())->photos,
             'quotes' => Quote::all(),
 
         ]);
