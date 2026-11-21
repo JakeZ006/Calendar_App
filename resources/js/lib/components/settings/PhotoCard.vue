@@ -32,9 +32,9 @@ const refresh = () => {
             class="list-item"
             v-for="photo in photos"
             :key="photo.id"
-            :class="{ 'selected-photo': selectedPhoto === photo.path }"
+            :class="{ 'selected-photo': selectedPhoto === photo.url ?? photo.path }"
           >
-            <button @click="selectedPhoto = photo.path">{{ photo.name }}</button>
+            <button @click="selectedPhoto = photo.url ?? photo.path">{{ photo.name }}</button>
             <Form :action="`/deletePhoto/${photo.id}`" method="delete" @success="refresh">
               <input type="hidden" name="id" :value="photo.id" />
               <button class="delete-photo-button"><Trash /></button>
