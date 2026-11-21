@@ -16,6 +16,8 @@ class PhotoController extends Controller
             'photo' => ['required', 'mimes:avif,png,jpeg,jpg,webp', File::image()->max(3 * 1024)],
         ]);
 
+        dd(config('filesystems.default'));
+
         $path = $request->image('photo')->optimize()->storePublicly('photos');
 
         Photo::create([
@@ -31,7 +33,7 @@ class PhotoController extends Controller
 
         // $this->authorize('delete', $photo);
 
-        Storage::disk()->delete($photo->path);
+        Storage::disk('public')->delete($photo->path);
 
         $photo::destroy($photo->id);
 
