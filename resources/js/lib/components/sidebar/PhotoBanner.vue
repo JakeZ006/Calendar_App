@@ -3,14 +3,14 @@ import { usePage, Link } from "@inertiajs/vue3";
 import { ImageUp } from "@lucide/vue";
 import { computed, onMounted, ref } from "vue";
 
-const page = usePage()
+const page = usePage();
 const photos = computed(() => page.props.photos ?? []);
 const firstPhoto = ref();
 
 const scrollspeed = computed(() => photos.value.length * 10);
 
 onMounted(() => {
-  firstPhoto.value = photos.value.length === 1 ? photos.value[0].path : null
+  firstPhoto.value = photos.value.length === 1 ? photos.value[0].path : null;
 });
 </script>
 
@@ -61,7 +61,7 @@ onMounted(() => {
   height: 100%;
 }
 
-.photo-singular{
+.photo-singular {
   width: 100cqi;
   height: 100cqh;
 }

@@ -12,7 +12,7 @@ const errors = computed(() => page.props.errors ?? []);
 
 const refresh = () => {
   selectedPhoto.value = "";
-  uploadedPhoto.value = false
+  uploadedPhoto.value = false;
   router.reload({
     only: ["photos"],
   });
@@ -124,8 +124,8 @@ const refresh = () => {
 }
 
 .photo {
-  margin-bottom: 1vh;
   max-height: 45vh;
+  margin-bottom: 1vh;
 }
 
 .photo-form-wrapper {
