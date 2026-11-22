@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\Photo;
 use App\Models\Quote;
-use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -20,14 +21,14 @@ class NoteController extends Controller
                 ->orderBy('for_date')
                 ->get()
                 ->groupBy('for_date'),
-            'photos' => User::find(Auth::id())->photos,
+            'photos' => Photo::where('user_id', Auth::id())->get(),
             'quotes' => Quote::all(),
 
         ]);
 
     }
 
-    public function store(Request $request, Note $note): void
+    public function store(Request $request, Note $note): RedirectResponse
     {
 
         $request->validate([
@@ -46,9 +47,11 @@ class NoteController extends Controller
             'content' => request('content'),
         ]);
 
+        return redirect()->route('home');
+
     }
 
-    public function update(Request $request, Note $note): void
+    public function update(Request $request, Note $note): RedirectResponse
     {
         $this->authorize('update', $note);
 
@@ -65,13 +68,18 @@ class NoteController extends Controller
             'expirable' => request('expirable'),
             'content' => request('content'),
         ]);
+
+        return redirect()->route('home');
+
     }
 
-    public function destroy(Request $request, Note $note): void
+    public function destroy(Request $request, Note $note): RedirectResponse
     {
 
         $this->authorize('delete', $note);
 
         $note->delete();
+
+        return redirect()->route('home');
     }
 }
