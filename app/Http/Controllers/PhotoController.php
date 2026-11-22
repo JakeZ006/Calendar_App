@@ -13,7 +13,7 @@ class PhotoController extends Controller
     public function store(Request $request): void
     {
         $request->validate([
-            'photo' => ['required', 'mimes:avif,png,jpeg,jpg,webp', File::image()->max(3 * 1024)],
+            'photo' => ['required', 'mimes:avif,png,jpeg,jpg,webp', File::image()->max(5 * 1024)],
         ]);
 
         $path = $request->image('photo')->store('photos');
@@ -31,7 +31,7 @@ class PhotoController extends Controller
     public function destroy(Request $request, Photo $photo): void
     {
 
-        // $this->authorize('delete', $photo);
+        $this->authorize('delete', $photo);
 
         Storage::disk('public')->delete($photo->path);
 
