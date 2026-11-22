@@ -1,3 +1,2 @@
 fix epirable
-fix image authorisation
 use has many for notes

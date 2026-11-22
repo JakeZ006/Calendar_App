@@ -44,7 +44,7 @@ const emit = defineEmits(["edit-note", "delete"]);
   gap: 2cqb;
   padding: 2cqb;
   border-radius: clamp(0.75rem, 0.85vw, 2rem);
-  font-size: clamp(0.875rem, 1vw, 2rem);
+  font-size: clamp(0.875rem, 1vh, 2rem);
   background-color: var(--white1);
   box-shadow: -3px 2px 5px 1px var(--white6);
 }
@@ -84,7 +84,7 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .edit-button {
-  border: clamp(2px, 0.2vw, 5px) solid var(--mix);
+  border: clamp(2px, 0.25vh, 5px) solid var(--mix);
   background-color: var(--white6);
 
   &:hover {
@@ -97,7 +97,7 @@ const emit = defineEmits(["edit-note", "delete"]);
 }
 
 .delete-button {
-  border: clamp(2px, 0.2vw, 5px) solid var(--red);
+  border: clamp(2px, 0.25vh, 5px) solid var(--red);
   background-color: var(--red-l2);
 
   &:hover {
