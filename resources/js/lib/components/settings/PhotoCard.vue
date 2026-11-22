@@ -16,7 +16,6 @@ const refresh = () => {
   router.reload({
     only: ["photos"],
   });
-  console.log(photos)
 };
 </script>
 <template>
@@ -47,7 +46,7 @@ const refresh = () => {
 
       <div class="upload-photo-box">
         <div class="photo-box">
-          <img class="photo" v-if="selectedPhoto" :src="`storage/${selectedPhoto}`" />
+          <img class="photo" v-if="selectedPhoto" :src="selectedPhoto" />
         </div>
 
         <Form

@@ -10,7 +10,7 @@ const firstPhoto = ref();
 const scrollspeed = computed(() => photos.value.length * 10);
 
 onMounted(() => {
-  firstPhoto.value = photos.value.length === 1 ? photos.value[0].path : null;
+  firstPhoto.value = photos.value.length === 1 ? photos.value[0].url : null;
 });
 </script>
 
@@ -23,14 +23,14 @@ onMounted(() => {
         :style="`animation-duration: ${scrollspeed}s`"
       >
         <div class="photo" v-for="photo in photos" :key="`${photo.id}-1`">
-          <img class="photo" :src="`storage/${photo.path}`" />
+          <img class="photo" :src="photo.url" />
         </div>
         <div class="photo-wrapper" v-for="photo in photos" :key="`${photo.id}-2`">
-          <img class="photo" :src="`storage/${photo.path}`" />
+          <img class="photo" :src="photo.url" />
         </div>
       </div>
       <div v-else>
-        <img class="photo-singular" v-if="firstPhoto" :src="`storage/${firstPhoto}`" />
+        <img class="photo-singular" v-if="firstPhoto" :src="firstPhoto" />
       </div>
       <div :class="['overlay', { empty: photos.length === 0 }]">
         <h1>Upload photos</h1>
