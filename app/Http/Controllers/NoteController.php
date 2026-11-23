@@ -45,7 +45,7 @@ class NoteController extends Controller
         $this->authorize('update', $note);
 
         $note->update([
-            ...$request->validated()
+            ...$request->validated(),
         ]);
 
         return redirect()->route('home');

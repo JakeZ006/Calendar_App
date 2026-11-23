@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -10,18 +11,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
     public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'username' => ['required', 'string'],
-            'password' => ['required', 'string'],
-        ]);
-
-        $user = User::create($credentials);
+        $user = User::create($request->validated());
 
         Auth::login($user);
 
@@ -39,7 +34,7 @@ class UserController extends Controller
 
         if (! Auth::attempt($credentials)) {
             return back()->withErrors([
-                'username' => 'Wrong username or password.',
+                'username' => 'Wrong username or password',
             ]);
         }
 
@@ -58,28 +53,26 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function updateUser(Request $request): RedirectResponse
+    public function updateUser(UpdateUserRequest $request): RedirectResponse
     {
         $user = Auth::user();
 
-        if (! Hash::check($request->oldPassword, $user->password)) {
-            return back()->withErrors([
-                'oldPassword' => 'Incorrect passord',
-            ]);
-        }
         if ($request->oldUsername !== $user->username) {
             return back()->withErrors([
-                'oldPassword' => 'Incorrect username',
+                'oldUsername' => 'Incorrect username',
+            ]);
+        }
+        if (! Hash::check($request->oldPassword, $user->password)) {
+            return back()->withErrors([
+                'oldPassword' => 'Incorrect password',
             ]);
         }
 
-        $request->validate([
-            'username' => ['required', 'string', 'unique:users', 'min:4', 'max:20'],
-            'password' => ['required', 'string', Password::min(8)->mixedCase()->symbols()],
-        ]);
+        $request->validated();
 
-        $user->username = $request->newUsername;
-
+        if ($request->filled('newUsername')) {
+            $user->username = $request->newUsername;
+        }
         if ($request->filled('newPassword')) {
             $user->password = $request->newPassword;
         }
@@ -94,12 +87,18 @@ class UserController extends Controller
         $user = Auth::user();
 
         $request->validate([
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
 
+        if ($request->username !== $user->username) {
+            return back()->withErrors([
+                'username' => 'Incorrect username',
+            ]);
+        }
         if (! Hash::check($request->password, $user->password)) {
             return back()->withErrors([
-                'password' => 'Your password is incorrect.',
+                'password' => 'Incorrect password',
             ]);
         }
 

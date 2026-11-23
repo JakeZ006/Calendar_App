@@ -1,8 +1,9 @@
 <script setup>
-import { usePage } from "@inertiajs/vue3";
+import { usePage, Form } from "@inertiajs/vue3";
+import { computed } from 'vue';
 
 const page = usePage();
-const errors = page.props.errors;
+const errors = computed(() => page.props.errors);
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const errors = page.props.errors;
       <header class="account-form-header">
         <h1 class="account-form-title">Delete Account</h1>
       </header>
-      <form class="form-stack" method="post" action="/deleteUser">
+      <Form class="form-stack" method="post" action="/deleteUser" resetOnSuccess>
         <div class="input-box form-field">
           <label for="username">Username</label>
           <input id="username" name="username" required />
@@ -22,7 +23,7 @@ const errors = page.props.errors;
         </div>
         <button class="delete-button">Delete</button>
         <p class="form-error" v-for="(val, key) in errors" :key="key">{{ val }}</p>
-      </form>
+      </Form>
     </div>
   </div>
 </template>

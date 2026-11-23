@@ -106,7 +106,7 @@ if (mode === "edit") {
               <label
                 :class="['option-button', { 'expirable-selected': form.expirable }]"
                 for="expirable"
-                title="Note expires after due date"
+                title="Note expires after its due date"
                 >Expirable</label
               >
               <input
@@ -122,7 +122,7 @@ if (mode === "edit") {
               <label
                 :class="['option-button', { 'important-selected': form.important }]"
                 for="important"
-                title="Highlights note as important"
+                title="Highlight this note as important"
               >
                 Important
               </label>

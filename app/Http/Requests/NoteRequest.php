@@ -12,7 +12,7 @@ class NoteRequest extends FormRequest
     {
 
         $this->merge([
-            'title' => ucfirst($this->title),
+            'title' => trim(ucfirst($this->title)),
             'important' => $this->boolean('important'),
             'expirable' => $this->boolean('expirable'),
         ]);
