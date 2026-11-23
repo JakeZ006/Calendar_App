@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
-use App\Models\Note;
 use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -61,17 +62,21 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $request->validate([
-            'oldPassword' => ['required', 'string'],
-            'newUsername' => ['required', 'string', 'min:4', 'max:20', 'unique:users'],
-            'newPassword' => ['nullable', 'string', 'min:8'],
-        ]);
-
         if (! Hash::check($request->oldPassword, $user->password)) {
             return back()->withErrors([
-                'oldPassword' => 'Your current password is incorrect.',
+                'oldPassword' => 'Incorrect passord',
             ]);
         }
+        if ($request->oldUsername !== $user->username) {
+            return back()->withErrors([
+                'oldPassword' => 'Incorrect username',
+            ]);
+        }
+
+        $request->validate([
+            'username' => ['required', 'string', 'unique:users', 'min:4', 'max:20'],
+            'password' => ['required', 'string', Password::min(8)->mixedCase()->symbols()],
+        ]);
 
         $user->username = $request->newUsername;
 
@@ -98,8 +103,11 @@ class UserController extends Controller
             ]);
         }
 
-        Note::where('user_id', $user->id)->delete();
-        Photo::where('user_id', $user->id)->delete();
+        $userPhotos = Photo::where('user_id', Auth::id())->get();
+
+        foreach ($userPhotos as $photo) {
+            Storage::disk()->delete($photo->path);
+        }
 
         Auth::logout();
 

@@ -1,2 +1,0 @@
-fix epirable
-use has many for notes

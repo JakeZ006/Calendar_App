@@ -29,14 +29,14 @@ class PhotoController extends Controller
         return redirect('settings');
     }
 
-    public function destroy(Request $request, Photo $photo): RedirectResponse
+    public function destroy(Photo $photo): RedirectResponse
     {
 
         $this->authorize('delete', $photo);
 
         Storage::disk()->delete($photo->path);
 
-        $photo::destroy($photo->id);
+        $photo->destroy($photo->id);
 
         return redirect('settings');
     }

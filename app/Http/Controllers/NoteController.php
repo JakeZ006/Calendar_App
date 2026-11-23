@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NoteRequest;
 use App\Models\Note;
 use App\Models\Photo;
 use App\Models\Quote;
@@ -28,45 +29,23 @@ class NoteController extends Controller
 
     }
 
-    public function store(Request $request, Note $note): RedirectResponse
+    public function store(NoteRequest $request): RedirectResponse
     {
-
-        $request->validate([
-            'title' => ['required', 'max:15', 'min:3'],
-            'type' => ['required'],
-            'content' => ['max:255'],
-        ]);
-
-        $note->create([
+        Note::create([
+            ...$request->validated(),
             'user_id' => Auth::id(),
-            'title' => ucfirst(request('title')),
-            'type' => request('type'),
-            'important' => request('important'),
-            'expirable' => request('expirable'),
-            'for_date' => request('for_date'),
-            'content' => request('content'),
         ]);
 
         return redirect()->route('home');
 
     }
 
-    public function update(Request $request, Note $note): RedirectResponse
+    public function update(NoteRequest $request, Note $note): RedirectResponse
     {
         $this->authorize('update', $note);
 
-        $request->validate([
-            'title' => ['required', 'max:15', 'min:3'],
-            'type' => ['required'],
-            'content' => ['max:255'],
-        ]);
-
         $note->update([
-            'title' => ucfirst(request('title')),
-            'type' => request('type'),
-            'important' => request('important'),
-            'expirable' => request('expirable'),
-            'content' => request('content'),
+            ...$request->validated()
         ]);
 
         return redirect()->route('home');
