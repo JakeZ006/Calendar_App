@@ -14,3 +14,5 @@ Schedule::call(function () {
         ->whereDate('for_date', '<', now()->subDay()->toDateString())
         ->delete();
 })->daily();
+
+Schedule::command('telescope:prune')->daily();

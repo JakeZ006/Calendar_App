@@ -1,6 +1,6 @@
 <script setup>
 import { usePage, Form } from "@inertiajs/vue3";
-import { computed } from 'vue';
+import { computed } from "vue";
 
 const page = usePage();
 const errors = computed(() => page.props.errors);
