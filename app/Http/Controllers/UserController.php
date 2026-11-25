@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Photo;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -55,7 +54,7 @@ class UserController extends Controller
 
     public function updateUser(UpdateUserRequest $request): RedirectResponse
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         if ($request->oldUsername !== $user->username) {
             return back()->withErrors([
@@ -67,8 +66,6 @@ class UserController extends Controller
                 'oldPassword' => 'Incorrect password',
             ]);
         }
-
-        $request->validated();
 
         if ($request->filled('newUsername')) {
             $user->username = $request->newUsername;
@@ -84,7 +81,7 @@ class UserController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         $request->validate([
             'username' => ['required', 'string'],
@@ -102,9 +99,7 @@ class UserController extends Controller
             ]);
         }
 
-        $userPhotos = Photo::where('user_id', Auth::id())->get();
-
-        foreach ($userPhotos as $photo) {
+        foreach ($user->photos()->get() as $photo) {
             Storage::disk()->delete($photo->path);
         }
 

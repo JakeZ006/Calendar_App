@@ -12,8 +12,8 @@ class UpdateUserRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'username' => trim($this->username),
-            'password' => trim($this->password),
+            'newUsername' => trim($this->newUsername),
+            'newPassword' => trim($this->newPassword),
         ]);
     }
 
@@ -24,9 +24,9 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'oldUsername' => ['required', 'string'],
-            'oldPassword' => ['required', 'string'],                            // /////////
-            'newUsername' => ['string', Rule::unique('users', 'username')->ignore($this->user()->getKey()), 'min:4', 'max:20'],
-            'newPassword' => [PasswordRule::default()],                              // //////////
+            'oldPassword' => ['required', 'string'],                                                     // /////////
+            'newUsername' => ['nullable', 'string', Rule::unique('users', 'username')->ignore($this->user()->id), 'min:4', 'max:20'],
+            'newPassword' => ['nullable', PasswordRule::default()],                                      // //////////
         ];
     }
 }

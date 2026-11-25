@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::inertia('/', 'UserLogin')->name('landing');
     Route::inertia('/register', 'UserRegister')->name('register');
-    Route::post('/register', [UserController::class, 'store'])->name('register.store');
+    Route::post('/register', [UserController::class, 'store'])->middleware('throttle:6,1')->name('register.store');
 
-    Route::inertia('/login', 'UserLogin')->middleware('guest')->name('login');
-    Route::post('/login', [UserController::class, 'loginUser'])->name('login.store');
+    Route::inertia('/login', 'UserLogin')->name('login');
+    Route::post('/login', [UserController::class, 'loginUser'])->middleware('throttle:6,1')->name('login.store');
 });
 
 Route::middleware('auth')->group(function () {

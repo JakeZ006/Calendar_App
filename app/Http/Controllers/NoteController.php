@@ -4,37 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NoteRequest;
 use App\Models\Note;
-use App\Models\Photo;
 use App\Models\Quote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class NoteController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $user = $request->user();
 
         return Inertia::render('Home', [
-            'notes' => Note::where('user_id', Auth::id())
-                ->orderBy('for_date')
-                ->get()
-                ->groupBy('for_date'),
-            'photos' => Photo::where('user_id', Auth::id())->get(),
+            'notes' => $user->notes()->orderBy('for_date')->get()->groupBy('for_date'),
+            'photos' => $user->photos()->get(),
             'quotes' => Quote::all(),
-
         ]);
 
     }
 
     public function store(NoteRequest $request): RedirectResponse
     {
-        Note::create([
-            ...$request->validated(),
-            'user_id' => Auth::id(),
-        ]);
+        $user = $request->user();
+
+        $user->notes()->create($request->validated());
 
         return redirect()->route('home');
 
@@ -44,17 +38,14 @@ class NoteController extends Controller
     {
         $this->authorize('update', $note);
 
-        $note->update([
-            ...$request->validated(),
-        ]);
+        $note->update($request->validated());
 
         return redirect()->route('home');
 
     }
 
-    public function destroy(Request $request, Note $note): RedirectResponse
+    public function destroy(Note $note): RedirectResponse
     {
-
         $this->authorize('delete', $note);
 
         $note->delete();
