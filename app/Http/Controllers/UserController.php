@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
@@ -15,25 +16,20 @@ class UserController extends Controller
 {
     public function store(RegisterUserRequest $request): RedirectResponse
     {
+
         $user = User::create($request->validated());
 
-        Auth::login($user);
-
+        Auth::login($user, $request->remember);
         $request->session()->regenerate();
 
         return redirect()->route('home');
     }
 
-    public function loginUser(Request $request): RedirectResponse
+    public function loginUser(LoginUserRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'username' => ['required', 'string'],
-            'password' => ['required', 'string'],
-        ]);
-
-        if (! Auth::attempt($credentials)) {
+        if (! Auth::attempt($request->validated(), $request->remember)) {
             return back()->withErrors([
-                'username' => 'Wrong username or password',
+                'password' => 'Wrong username or password',
             ]);
         }
 

@@ -36,6 +36,10 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
         <label for="password">Password</label>
         <input id="password" name="password" required type="password" />
         <p class="form-error">{{ errors.password }}</p>
+        <div class="remember-wrapper">
+          <label for="remember">Remember me</label>
+          <input id="remember" type="checkbox" name="remember" />
+        </div>
       </div>
       <button class="login-button button-primary">
         {{ url === "/register" ? "Register" : "Log in" }}
@@ -44,6 +48,18 @@ const title = url.charAt(1).toUpperCase() + url.slice(2);
   </div>
 </template>
 <style lang="scss" scoped>
+.remember-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: start;
+}
+
+#remember {
+  width: 1.5cqh;
+  height: 1.5cqh;
+}
+
 .redirect-wrapper {
   display: flex;
   gap: clamp(0.375rem, 0.6vw, 1.25rem);

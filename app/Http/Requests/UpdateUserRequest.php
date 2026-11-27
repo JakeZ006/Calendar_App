@@ -24,9 +24,9 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'oldUsername' => ['required', 'string'],
-            'oldPassword' => ['required', 'string'],                                                     // /////////
+            'oldPassword' => ['required', 'string'],
             'newUsername' => ['nullable', 'string', Rule::unique('users', 'username')->ignore($this->user()->id), 'min:4', 'max:20'],
-            'newPassword' => ['nullable', PasswordRule::default()],                                      // //////////
+            'newPassword' => ['nullable', PasswordRule::default()],
         ];
     }
 }
