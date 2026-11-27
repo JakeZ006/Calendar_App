@@ -20,6 +20,7 @@ class UserController extends Controller
         $user = User::create($request->validated());
 
         Auth::login($user, $request->remember);
+
         $request->session()->regenerate();
 
         return redirect()->route('home');

@@ -22,7 +22,7 @@ const formAttrs =
     : { action: "/createNote", method: "post" };
 
 if (mode === "edit") {
-  const note = page.props.notes[day]?.find((i) => i.id === noteId);
+  const note = page.props.notes[day].find((i) => i.id === noteId);
 
   if (note) {
     Object.assign(form, {

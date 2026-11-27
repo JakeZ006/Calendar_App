@@ -14,7 +14,7 @@ class PhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => ['required', File::image()->max(5 * 1024)], // //////////////
+            'photo' => ['required', File::image()->max(5 * 1024)],
         ];
     }
 }

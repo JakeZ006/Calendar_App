@@ -10,7 +10,7 @@ export default defineComponent({
 </script>
 
 <script setup>
-import { computed, onMounted, reactive, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import { useDate } from "../../composables/date.js";
 import { ZoomIn, ZoomOut } from "@lucide/vue";
